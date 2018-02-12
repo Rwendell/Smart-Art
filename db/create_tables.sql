@@ -2,7 +2,7 @@ create table Users(
 UserID char (15) NOT NULL,
 Username varchar (15) NOT NULL,
 Hash nvarchar(128) NOT NULL,
-Salt nvarchar(128) NOT NULL,
+Salt nvarchar(10) NOT NULL,
 Admin bool NOT NULL,
 primary key (UserID)
 );
