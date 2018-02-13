@@ -1,17 +1,17 @@
 package com.smartart.server;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 
+@Entity
 public class ArtBoard {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-
+  @GeneratedValue(strategy=GenerationType.AUTO)
   private String userId;
   private String artboardId;
   private String artboardName;
