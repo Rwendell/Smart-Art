@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class ArtBoard {
+public class artboard {
 
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)

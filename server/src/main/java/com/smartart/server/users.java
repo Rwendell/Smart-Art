@@ -1,22 +1,20 @@
 package com.smartart.server;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Users {
+public class users {
 
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
-
+  @Column(name = "UserID")
   private String userId;
+
+
   private String username;
   private String hash;
   private String salt;
   private long admin;
-
 
   public String getUserId() {
     return userId;

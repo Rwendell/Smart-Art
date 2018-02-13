@@ -1,6 +1,5 @@
 package com.smartart.server;
 
-import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.xml.bind.SchemaOutputResolver;
+import java.nio.charset.Charset;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 
 @Controller    // This means that this class is a Controller
@@ -18,7 +21,7 @@ public class MainController {
 
     @Autowired
 
-    private UsersRepository UsersRepository;
+    private usersRepository usersRepository;
 
     @GetMapping(path= "/adduser") //Map ONLY GET Requests
     public @ResponseBody String addNewUser (@RequestParam String username
@@ -30,19 +33,22 @@ public class MainController {
         //TODO: find out how to fix this error!!!
 
 
-        Users n = new Users();
+        users n = new users();
 
         n.setAdmin(0);
         n.setUsername(username);  //sets Username
 
-        String usersUUID = UUID.randomUUID().toString(); //sets UserId
-        usersUUID = usersUUID.replaceAll("-", "");
-        n.setUserId(usersUUID);
+
 
         SecureRandom random = new SecureRandom(); //sets Salt
         byte salt[] = new byte[10];
         random.nextBytes(salt);
+
         n.setSalt(new String(salt));
+        System.out.println(Arrays.toString(salt));
+        String salt_ret = n.getSalt();
+        System.out.println(Arrays.toString(salt_ret.toCharArray()));
+
 
 
         String saltString = new String(salt); //appends salt to beginning of password and hashes
@@ -50,7 +56,7 @@ public class MainController {
         String hashed = DigestUtils.sha256Hex(passSalt);
         n.setHash(hashed);
 
-        UsersRepository.save(n);
+        usersRepository.save(n);
         return "Saved New User";
 
         /*
@@ -67,13 +73,13 @@ public class MainController {
 /*
     @Autowired
 
-    private ArtBoardRepository artBoardRepository;
+    private artboardRepository artBoardRepository;
 
     @GetMapping(path= "/addboard") //Map ONLY GET Requests
     public @ResponseBody String addNewArtboard (@RequestParam String artboardName
             , @RequestParam String UserId) {
 
-        ArtBoard n = new ArtBoard();
+        artboard n = new artboard();
 
         n.setArtboardName(artboardName);
         n.setUserId(UserId);
