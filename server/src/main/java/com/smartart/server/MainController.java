@@ -1,5 +1,7 @@
 package com.smartart.server;
 
+
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,10 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.xml.bind.SchemaOutputResolver;
-import java.nio.charset.Charset;
-import java.security.SecureRandom;
-import java.util.Arrays;
+
 
 
 @Controller    // This means that this class is a Controller
@@ -21,7 +20,7 @@ public class MainController {
 
     @Autowired
 
-    private usersRepository usersRepository;
+    private UserRepository UserRepository;
 
     @GetMapping(path= "/adduser") //Map ONLY GET Requests
     public @ResponseBody String addNewUser (@RequestParam String username
@@ -30,34 +29,28 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
 
-        //TODO: find out how to fix this error!!!
+
+        try {
+            UserRepository.findByUsername(username).getUsername();
 
 
-        users n = new users();
-
-        n.setAdmin(0);
-        n.setUsername(username);  //sets Username
-
-
-
-        SecureRandom random = new SecureRandom(); //sets Salt
-        byte salt[] = new byte[10];
-        random.nextBytes(salt);
-
-        n.setSalt(new String(salt));
-        System.out.println(Arrays.toString(salt));
-        String salt_ret = n.getSalt();
-        System.out.println(Arrays.toString(salt_ret.toCharArray()));
+        } catch (NullPointerException ex){
+            User n = new User();
+            n.setUsername(username);  //sets Username
+            n.setAdmin(0);      //default to 0 -> false
+            String salt_string = RandomStringUtils.random(8);
+            n.setSalt(salt_string);
+            String passSalt = salt_string + password;
+            String hashed = DigestUtils.sha256Hex(passSalt);
+            n.setHash(hashed);
+            UserRepository.save(n);
+            return "Saved New User";
+        }
 
 
+        return "Username Taken";
 
-        String saltString = new String(salt); //appends salt to beginning of password and hashes
-        String passSalt = saltString + password;
-        String hashed = DigestUtils.sha256Hex(passSalt);
-        n.setHash(hashed);
 
-        usersRepository.save(n);
-        return "Saved New User";
 
         /*
             HOW TO RETRIEVE A PASSWORD
@@ -70,33 +63,36 @@ public class MainController {
          */
     }
 
-/*
+
     @Autowired
 
-    private artboardRepository artBoardRepository;
+    private ArtboardRepository artBoardRepository;
 
     @GetMapping(path= "/addboard") //Map ONLY GET Requests
     public @ResponseBody String addNewArtboard (@RequestParam String artboardName
             , @RequestParam String UserId) {
 
-        artboard n = new artboard();
 
-        n.setArtboardName(artboardName);
-        n.setUserId(UserId);
 
-        String artboardUUID = UUID.randomUUID().toString(); //sets UserId
-        artboardUUID = artboardUUID.replaceAll("-", "");
+        try{artBoardRepository.findByArtboardName(artboardName).getArtboardName();}
+        catch(NullPointerException ex){
+            Artboard n = new Artboard();
+            n.setArtboardName(artboardName);
+            n.setUserId(UserId);
+            artBoardRepository.save(n);
+            return "Saved New Board";
+        }
 
-        n.setUserId(artboardUUID);
 
-        artBoardRepository.save(n);
-        return "Saved New Board";
 
+
+
+        return "Board name taken";
     }
 
 
 
-*/
+
 
 
 

@@ -3,7 +3,7 @@ package com.smartart.server;
 import javax.persistence.*;
 
 @Entity
-public class users {
+public class User {
 
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)

@@ -1,29 +1,20 @@
 package com.smartart.server;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
 
 @Entity
-public class artboard {
+public class Artboard {
 
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
-  private String userId;
+  @GeneratedValue(strategy = GenerationType.AUTO)
+
+  @Column(name = "ArtboardID")
   private String artboardId;
+  @Column(name = "ArtboardName")
   private String artboardName;
-
-
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+  @Column(name = "UserID")
+  private String userId;
 
 
   public String getArtboardId() {
@@ -41,6 +32,15 @@ public class artboard {
 
   public void setArtboardName(String artboardName) {
     this.artboardName = artboardName;
+  }
+
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
 }
