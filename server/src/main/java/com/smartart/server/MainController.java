@@ -5,12 +5,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller    // This means that this class is a Controller
@@ -22,7 +17,7 @@ public class MainController {
 
     private UserRepository UserRepository;
 
-    @GetMapping(path= "/adduser") //Map ONLY GET Requests
+    @PostMapping(path= "/adduser") //Map ONLY POST Requests
     public @ResponseBody String addNewUser (@RequestParam String username
             , @RequestParam String password) {
         // @ResponseBody means the returned String is the response, not a view name
@@ -68,7 +63,7 @@ public class MainController {
 
     private ArtboardRepository artBoardRepository;
 
-    @GetMapping(path= "/addboard") //Map ONLY GET Requests
+    @PostMapping(path= "/addboard") //Map ONLY POST Requests
     public @ResponseBody String addNewArtboard (@RequestParam String artboardName
             , @RequestParam String UserId) {
 
