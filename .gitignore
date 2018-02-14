@@ -1,3 +1,7 @@
+#Ignore testing directory
+test/
+
+
 #Spring
 *.java.hsp
 *.sonarj
