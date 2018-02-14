@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller    // This means that this class is a Controller
-@RequestMapping(path="/artboard") // This means URL's start with /API (after Application path)
+@RequestMapping(path="/artboard") // This means URL's start with /artboard (after Application path)
 
 public class ArtboardController {
 
@@ -23,10 +23,12 @@ public class ArtboardController {
 
 
 
-        try{artBoardRepository.findByArtboardName(artboardName).getArtboardName();}
+        try{
+            //noinspection ResultOfMethodCallIgnored    This makes sure the warning is suppresed
+            artBoardRepository.findByArtboardName(artboardName).getArtboardName();
+        }
         catch(NullPointerException ex)
         {
-
             Artboard n = new Artboard();
             n.setArtboardName(artboardName);
             n.setUserId(UserId);

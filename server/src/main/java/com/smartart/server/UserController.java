@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller    // This means that this class is a Controller
-@RequestMapping(path="/user") // This means URL's start with /API (after Application path)
+@RequestMapping(path="/user") // This means URL's start with /user (after Application path)
 
 public class UserController {
 
@@ -25,7 +25,10 @@ public class UserController {
 
 
 
-        try { UserRepository.findByUsername(username).getUsername(); }
+        try {
+            //noinspection ResultOfMethodCallIgnored    This makes sure the warning is suppresed
+            UserRepository.findByUsername(username).getUsername();
+            }
             catch (NullPointerException ex)
             {
                 User n = new User();
