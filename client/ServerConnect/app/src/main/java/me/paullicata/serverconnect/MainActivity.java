@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String TAG = this.getClass().getSimpleName();
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         MySingleton.getInstance(this).addToRequestQueue(request);
 
-    }
+    }*/
 
 
 }

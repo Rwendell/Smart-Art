@@ -1,6 +1,6 @@
 package me.paullicata.serverconnect.app;
 
-//import info.vamsikrishna.volleyeg.utils.LruBitmapCache;
+import info.vamsikrishna.volleyeg.utils.LruBitmapCache;
 import android.app.Application;
 import android.text.TextUtils;
 import com.android.volley.Request;

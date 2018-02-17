@@ -8,7 +8,7 @@ public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name = "UserID")
-  private String userId;
+  private Long userId;
 
 
   private String username;
@@ -16,11 +16,11 @@ public class User {
   private String salt;
   private long admin;
 
-  public String getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
