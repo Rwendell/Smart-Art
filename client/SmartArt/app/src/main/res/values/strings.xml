@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SmartArt</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="submit_user_info">Submit</string>
+    <string name="comfirm_password">Confirm Password</string>
+</resources>
