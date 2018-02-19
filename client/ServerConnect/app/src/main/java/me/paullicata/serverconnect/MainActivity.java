@@ -50,9 +50,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView mImageView;
     mTxtDisplay = (TextView) findViewById(R.id.txtDisplay);
     String url = "http://ip.jsontest.com";
+    String url1 = "http://proj-309-sb-2.cs.iastate.edu/";
 
     JsonObjectRequest jsObjRequest = new JsonObjectRequest
-            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
@@ -62,13 +63,14 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    // TODO Auto-generated method stub
-
+                    Toast.makeText(getApplicationContext(), "Error while reading server", Toast.LENGTH_SHORT).show();
                 }
             });
 
 // Access the RequestQueue through your singleton class.
-    MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
+            MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
     }
+
+
 }
