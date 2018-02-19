@@ -1,8 +1,9 @@
 package com.smartart.server;
 
 
-import org.apache.commons.lang.RandomStringUtils;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class UserController {
 
     private UserRepository UserRepository;
 
-    @PostMapping(path = "/add") //Map ONLY POST Requests
+    @RequestMapping(path = "/add", method = RequestMethod.POST, produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String addNewUser(@RequestParam String username
             , @RequestParam String password) {
@@ -38,11 +39,21 @@ public class UserController {
             String hashed = DigestUtils.sha256Hex(passSalt);
             n.setHash(hashed);
             UserRepository.save(n);
-            return "Saved New User";
+            //return "Saved New User";
+            //TODO: return JSON
+
+            JSONObject userInfo = new JSONObject();
+            userInfo.put("response", "user successfully added");
+            userInfo.put("userId", n.getUserId());
+            userInfo.put("username", n.getUsername());
+
+            return userInfo.toString();
         }
 
+        JSONObject fail = new JSONObject();
+        fail.put("failure", "Username Taken");
 
-        return "Username Taken";
+        return fail.toString();
 
 
 
@@ -58,7 +69,7 @@ public class UserController {
     }
 
 
-    @PostMapping(path = "/login") //Map ONLY POST Requests
+    @RequestMapping(path = "/login", method = RequestMethod.POST, produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String loginUser(@RequestParam String username
             , @RequestParam String password) {
@@ -79,14 +90,20 @@ public class UserController {
         System.out.println("correct hash: " + correct);
 
         if (correct.equals(hashEntered)) {
-            return n.getUserId().toString();
+            JSONObject success = new JSONObject();
+            success.put("response", "login success");
+            success.put("userId", n.getUserId());
+            success.put("username", n.getUsername());
+
+            return success.toString();
         }
 
-
-        return "Incorrect Login";
+        JSONObject fail = new JSONObject();
+        fail.put("response","Incorrect Login");
+        return fail.toString();
     }
 
-    @PostMapping(path= "/changepass") //Map ONLY POST Requests
+    @RequestMapping(path= "/changepass", method = RequestMethod.POST, produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody String changePass (@RequestParam Long userId
             , @RequestParam String password) {
 
@@ -99,7 +116,10 @@ public class UserController {
         n.setHash(hashed);
         UserRepository.save(n);
 
-        return "password changed!";
+        JSONObject success = new JSONObject();
+        success.put("response","successfully changed password");
+
+        return success.toString();
 
 
 
