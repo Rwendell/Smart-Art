@@ -1,4 +1,4 @@
-package com.example.austinsehnert.smartart;
+package me.paullicata.serverconnect;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void collectUserInfo(View view){
-        Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
-        Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
+        Intent registrationSuccessful = new Intent(this, com.example.austinsehnert.smartart.DisplayMessageActivity.class);
+        Intent registrationFailed = new Intent(this, com.example.austinsehnert.smartart.RegistrationFailedActivity.class);
 
         EditText name = (EditText) findViewById(R.id.username);
         String message = name.getText().toString();

@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("me.paullicata.serverconnect", appContext.getPackageName());
+        Assert.assertEquals("me.paullicata.serverconnect", appContext.getPackageName());
     }
 }

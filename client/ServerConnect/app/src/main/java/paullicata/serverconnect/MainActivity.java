@@ -52,23 +52,28 @@ public class MainActivity extends AppCompatActivity {
     String url = "http://ip.jsontest.com";
 
     JsonObjectRequest jsObjRequest = new JsonObjectRequest
-            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
                     mTxtDisplay.setText("Response: " + response.toString());
+
+
                 }
             }, new Response.ErrorListener() {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     // TODO Auto-generated method stub
+                    Toast.makeText(getApplicationContext(), "Error while reading server", Toast.LENGTH_SHORT).show();
 
                 }
             });
 
 // Access the RequestQueue through your singleton class.
-    MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
+
+
+     me.paullicata.serverconnect.MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
     }
 }

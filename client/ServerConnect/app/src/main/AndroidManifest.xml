@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity"></activity>
-        <activity android:name=".RegistrationFailedActivity"></activity>
+        <activity android:name="me.paullicata.serverconnect.RegistrationFailedActivity"></activity>
     </application>
 
 </manifest>
