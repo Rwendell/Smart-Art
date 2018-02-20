@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(getApplicationContext(), "Error while reading server", Toast.LENGTH_SHORT).show();
-                        //VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
                     }
                 });
 
