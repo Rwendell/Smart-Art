@@ -53,17 +53,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(userReg);
 
 
-        String url1 = "http://proj-309-sb-2.cs.iastate.edu";
+        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
         String url = "http://ip.jsontest.com";
 
         String tag_json_obj ="json_obj_req";
 
-
         final TextView mTxtDisplay;
         mTxtDisplay = (TextView) findViewById(R.id.username);
 
+        JSONObject obj = new JSONObject();
+
+        try{
+            obj.put("username", "meme");
+            obj.put("password", "lol");
+
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url1, null, new Response.Listener<JSONObject>() {
+                (Request.Method.POST, url1, obj, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
