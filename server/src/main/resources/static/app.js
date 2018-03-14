@@ -13,7 +13,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-	ws = new WebSocket('ws://localhost:8080/name');
+	ws = new WebSocket('ws://localhost:8080/mainBoard');
 	ws.onmessage = function(data){
 		showGreeting(data.data);
 	}
@@ -29,7 +29,7 @@ function disconnect() {
 }
 
 function sendName() {
-	var data = JSON.stringify({'name': $("#name").val()})
+	var data = JSON.stringify({'drawElement': $("#name").val()})
     ws.send(data);
 }
 
