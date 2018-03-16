@@ -13,7 +13,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-	ws = new WebSocket('ws://localhost:8080/mainBoard');
+	ws = new WebSocket('ws://localhost:8080/board/mainBoard');
 	ws.onmessage = function(data){
 		showGreeting(data.data);
 	}

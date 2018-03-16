@@ -19,11 +19,11 @@ public class WebSocketConfig implements WebSocketConfigurer {
         //just make different handlers then you should be able to handle each thing differently
 
 
-        registry.addHandler(new SocketHandler(), "/mainBoard");
+        registry.addHandler(new SocketHandler(), "/board/mainBoard");
 
 
         for (Artboard artboard : artBoardRepository.findAll()) {
-            registry.addHandler(new SocketHandler(), "/" + artboard.getArtboardId());
+            registry.addHandler(new SocketHandler(), "/board/" + artboard.getArtboardId());
         }
     }
 }

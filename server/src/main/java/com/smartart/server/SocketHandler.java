@@ -45,8 +45,6 @@ public class SocketHandler extends TextWebSocketHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 
@@ -68,10 +66,6 @@ public class SocketHandler extends TextWebSocketHandler {
         File fi = new File("/resources" + session.getUri() + ".png");
         byte[] fileContent = Files.readAllBytes(fi.toPath());
         session.sendMessage(new BinaryMessage(fileContent));
-
-
-
-
     }
 
 }
