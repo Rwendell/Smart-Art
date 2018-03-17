@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         MySingleton.getInstance(this).addToRequestQueue(request);
 
     }

@@ -9,6 +9,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+import java.net.URI;
+
 public class MySingleton {
     private static MySingleton mInstance;
     private RequestQueue mRequestQueue;
@@ -35,6 +37,8 @@ public class MySingleton {
                     }
                 });
     }
+
+
 
     public static synchronized MySingleton getInstance(Context context) {
         if (mInstance == null) {
