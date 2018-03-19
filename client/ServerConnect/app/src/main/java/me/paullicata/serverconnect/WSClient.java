@@ -26,6 +26,8 @@ package me.paullicata.serverconnect;
  */
 
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.ByteBuffer;
 import java.util.Map;
 
 import org.java_websocket.client.WebSocketClient;
@@ -34,6 +36,10 @@ import org.java_websocket.handshake.ServerHandshake;
 
 /** This example demonstrates how to create a websocket connection to a server. Only the most important callbacks are overloaded. */
 public class WSClient extends WebSocketClient {
+
+
+	ByteBuffer byteMessage;
+	String stringMessage;
 
 	public WSClient(URI serverUri , Draft draft ) {
 		super( serverUri, draft );
@@ -70,7 +76,16 @@ public class WSClient extends WebSocketClient {
 	@Override
 	public void onMessage( String message ) {
 
+		this.stringMessage = message;
 
+
+		System.out.println( "received: " + message );
+	}
+
+	@Override
+	public void onMessage( ByteBuffer message ) {
+
+		this.byteMessage = message;
 
 		System.out.println( "received: " + message );
 	}
@@ -87,11 +102,27 @@ public class WSClient extends WebSocketClient {
 		// if the error is fatal then onClose will be called additionally
 	}
 
+
+
+
+
 	/*
+
+
+	If this is not working try using this guide:
+	https://github.com/TooTallNate/Java-WebSocket/blob/master/src/main/example/ChatClient.java
+	I think this will work better, this ovverrides the class in the file, should be able to
+	add to the drawing queue much easier
+
+	//HOW TO USE:
+
+
+
 
 	public static void main( String[] args ) throws URISyntaxException {
 		WSClient c = new WSClient( new URI( "ws://proj-309-sb-2.cs.iastate.edu:8080/board/{BoardID}" )); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
 		c.connect();
+		c.onm
 
 	}
 

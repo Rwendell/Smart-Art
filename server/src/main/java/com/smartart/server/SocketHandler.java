@@ -53,12 +53,6 @@ public class SocketHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         //the messages will be broadcasted to all users.
 
-        /*TODO: find out how this works
-
-        I understand that this is used to send messages, but I need it to handle specific cases, this works too
-        generically.
-
-         */
 
         sessions.add(session);
         //essentially this should be taking a file and converting it to a byte array
