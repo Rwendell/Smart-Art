@@ -23,7 +23,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
     }
 
-    public void proceedToGlobal(View view){
+    public void proceedToGlobal(View view) {
         Intent toGlobal = new Intent(this, GlobalActivity.class);
         startActivity(toGlobal);
     }

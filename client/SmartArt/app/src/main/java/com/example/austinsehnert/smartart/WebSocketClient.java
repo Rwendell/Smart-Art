@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -48,6 +47,7 @@ public class WebSocketClient {
 
             // Inflate the menu; this adds items to the action bar if it is present.
             getMenuInflater().inflate(R.menu.main, menu);
+
             return true;
         }
 

@@ -20,7 +20,7 @@ public class NewUserRegActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user_reg);
     }
 
-    public void collectUserInfo(View view){
+    public void collectUserInfo(View view) {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
@@ -28,8 +28,8 @@ public class NewUserRegActivity extends AppCompatActivity {
         String message = name.getText().toString();
         String fail = "";
 
-        for(String checkName : usernames){
-            if(checkName.equals(message)) {
+        for (String checkName : usernames) {
+            if (checkName.equals(message)) {
                 fail = "Not unique username";
                 registrationFailed.putExtra(EXTRA_MESSAGE, fail);
                 startActivity(registrationFailed);
@@ -46,13 +46,12 @@ public class NewUserRegActivity extends AppCompatActivity {
         EditText password2 = (EditText) findViewById(R.id.password2);
         String password2str = password2.getText().toString();
 
-        if(! passwordstr.equals(password2str)){
+        if (!passwordstr.equals(password2str)) {
             fail = "Passwords do not match";
             registrationFailed.putExtra(EXTRA_MESSAGE, fail);
             startActivity(registrationFailed);
             return;
-        }
-        else {
+        } else {
             message = "Welcome " + message + "!";
             passwords.add(passwordstr);
 

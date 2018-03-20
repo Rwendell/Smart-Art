@@ -60,16 +60,16 @@ public class ArtboardController {
 
 
             //not sure what i'm doing here
-            WebSocketHandlerRegistry registry = new WebSocketHandlerRegistry() {
+            /*WebSocketHandlerRegistry registry = new WebSocketHandlerRegistry() {
                 @Override
                 public WebSocketHandlerRegistration addHandler(WebSocketHandler webSocketHandler, String... paths) {
                     return null;
                 }
             };
 
-
+            */
             //I don't think this gets added
-            registry.addHandler(new SocketHandler(), "/" + n.getArtboardId());
+            //registry.addHandler(new SocketHandler(), "/" + n.getArtboardId());
 
 
             return success.toString();

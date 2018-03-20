@@ -2,9 +2,7 @@ package com.smartart.server;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
-import org.springframework.web.socket.BinaryMessage;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 
@@ -23,6 +21,11 @@ public class SocketHandler extends TextWebSocketHandler {
 
 
     @Override
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+    sessions.remove(session);
+    }
+
+    @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message)
             throws InterruptedException, IOException {
         Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
@@ -39,7 +42,7 @@ public class SocketHandler extends TextWebSocketHandler {
     @Override
     public void handleBinaryMessage(WebSocketSession session, BinaryMessage message) {
 
-        //should send binary files okay
+
         try {
             session.sendMessage(new BinaryMessage(message.getPayload()));
         } catch (IOException e) {
@@ -51,20 +54,14 @@ public class SocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        //the messages will be broadcasted to all users.
 
-        /*TODO: find out how this works
-
-        I understand that this is used to send messages, but I need it to handle specific cases, this works too
-        generically.
-
-         */
 
         sessions.add(session);
         //essentially this should be taking a file and converting it to a byte array
         //remove if not working
         File fi = new File("/resources" + session.getUri() + ".png");
         byte[] fileContent = Files.readAllBytes(fi.toPath());
+        //System.out.println(Arrays.toString(fileContent));
         session.sendMessage(new BinaryMessage(fileContent));
     }
 
