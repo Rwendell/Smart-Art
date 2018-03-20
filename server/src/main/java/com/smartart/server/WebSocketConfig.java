@@ -10,20 +10,12 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
-    @Autowired
-    private ArtboardRepository artBoardRepository;
-
 
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 
         //just make different handlers then you should be able to handle each thing differently
 
+        registry.addHandler(new SocketHandler(), "/board/{id}");
 
-        registry.addHandler(new SocketHandler(), "/board/mainBoard");
-
-
-        for (Artboard artboard : artBoardRepository.findAll()) {
-            registry.addHandler(new SocketHandler(), "/board/" + artboard.getArtboardId());
-        }
     }
 }

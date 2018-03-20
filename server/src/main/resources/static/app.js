@@ -14,9 +14,20 @@ function setConnected(connected) {
 
 function connect() {
 	ws = new WebSocket('ws://localhost:8080/board/mainBoard');
+
+
+
+
+
 	ws.onmessage = function(data){
 		showGreeting(data.data);
+		console.log(data)
 	}
+
+
+
+
+
 	 setConnected(true);
 }
 
@@ -34,6 +45,7 @@ function sendName() {
 }
 
 function showGreeting(message) {
+    console.log(message);
     $("#greetings").append("<tr><td> " + message + "</td></tr>");
 }
 
