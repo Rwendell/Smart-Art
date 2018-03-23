@@ -109,7 +109,7 @@ public class WSClient extends WebSocketClient {
 
 
 
-
+/*
 
 	If this is not working try using this guide:
 	https://github.com/TooTallNate/Java-WebSocket/blob/master/src/main/example/ChatClient.java
