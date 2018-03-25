@@ -20,16 +20,6 @@ public class ArtboardController {
     private ArtboardRepository artBoardRepository;
 
 
-    //TODO: Dynamically add more handlers
-
-
-
-    /*
-    A bit confused with this
-
-    @Autowired
-    private WebSocketConfig config;
-    */
 
 
 
@@ -55,22 +45,6 @@ public class ArtboardController {
             success.put("response","successfully added new board");
             success.put("artboard name",n.getArtboardName());
             success.put("userId",n.getUserId());
-
-            //should add a new handler on creation of board
-
-
-            //not sure what i'm doing here
-            /*WebSocketHandlerRegistry registry = new WebSocketHandlerRegistry() {
-                @Override
-                public WebSocketHandlerRegistration addHandler(WebSocketHandler webSocketHandler, String... paths) {
-                    return null;
-                }
-            };
-
-            */
-            //I don't think this gets added
-            //registry.addHandler(new SocketHandler(), "/" + n.getArtboardId());
-
 
             return success.toString();
         }

@@ -13,16 +13,30 @@ function setConnected(connected) {
 }
 
 function connect() {
+
 	ws = new WebSocket('ws://localhost:8080/board/mainBoard');
 
-
-
-
+	console.log("ws 1:" + ws.url);
 
 	ws.onmessage = function(data){
-		showGreeting(data.data);
-		console.log(data)
+            showGreeting(data.data);
 	}
+
+
+
+
+	var ws2 = new WebSocket('ws://localhost:8080/board/2');
+
+    console.log("ws 2:" + ws2.url);
+
+    console.log("The rest of the output will be taken from ws2")
+
+    console.log("-----------------------------------------------------");
+
+    ws2.onmessage = function(data){
+        console.log("ws2:   " + data.data);
+    }
+
 
 
 
@@ -45,8 +59,16 @@ function sendName() {
 }
 
 function showGreeting(message) {
-    console.log(message);
-    $("#greetings").append("<tr><td> " + message + "</td></tr>");
+    if (message.length > 1000){
+        $("#greetings").append
+        (
+            "<tr><td> " +
+            message.substring(0,50) + " ... " + message.substring(message.length-51,message.length)
+            + "</td></tr>"
+
+        );
+    }
+    else $("#greetings").append("<tr><td> " + message + "</td></tr>");
 }
 
 $(function () {
@@ -56,5 +78,6 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
+
 });
 

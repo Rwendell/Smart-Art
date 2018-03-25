@@ -52,8 +52,11 @@ public class SocketHandler extends TextWebSocketHandler {
 
 
 
+
+
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+
 
 
         sessions.add(session);
@@ -61,8 +64,47 @@ public class SocketHandler extends TextWebSocketHandler {
         //remove if not working
         File fi = new File("/resources" + session.getUri() + ".png");
         byte[] fileContent = Files.readAllBytes(fi.toPath());
-        //System.out.println(Arrays.toString(fileContent));
-        session.sendMessage(new BinaryMessage(fileContent));
+
+        /*                                  PRIMARY PLAN (Commented out for demo purposes)                         */
+
+        //session.sendMessage((new BinaryMessage(fileContent)));
+
+
+        /*                                  BACKUP PLAN                                                            */
+
+        //easier than using Arrays.toString() and formatting the string
+        String fc = new String();
+        for(byte c : fileContent) {
+            fc = fc + String.format("%d ", c);
+        }
+
+        /*
+
+        Session.sendMessage((new TextMessage( <Payload> ))) has it's own JSON format
+        No need to format it as a JSON
+
+        if Necessary:
+        JSONObject pL = new JSONObject();//payload
+        pL.put("boardSnapshot", fc);
+        session.sendMessage(new TextMessage(pL.toString()));
+
+        */
+
+
+
+        session.sendMessage((new TextMessage( fc )));
+
+        /*
+            making fc into an array again:
+
+            String[] fcArr = fc.split("\\s+");
+
+            int[] numbers = new int[fc.length];
+            for(int i = 0;i < fc.length;i++)
+            {
+               numbers[i] = Integer.parseInt(fcArr[i]);
+            }
+         */
     }
 
 }
