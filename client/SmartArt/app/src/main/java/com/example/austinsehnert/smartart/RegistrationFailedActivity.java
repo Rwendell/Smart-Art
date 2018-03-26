@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class RegistrationFailedActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.example.austinsehnert.smartart.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,15 +16,15 @@ public class RegistrationFailedActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(NewUserRegActivity.EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.failure_message);
         textView.setText(message);
     }
 
-    public void returnToUserRegistration(View view){
-        Intent backToUserRegistration = new Intent(this, MainActivity.class);
+    public void returnToUserRegistration(View view) {
+        Intent backToUserRegistration = new Intent(this, NewUserRegActivity.class);
         startActivity(backToUserRegistration);
     }
 }

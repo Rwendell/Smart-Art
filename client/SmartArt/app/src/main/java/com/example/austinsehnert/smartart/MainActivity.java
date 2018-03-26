@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -19,99 +20,95 @@ import com.example.austinsehnert.smartart.app.AppController;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
 
-    public static final String EXTRA_MESSAGE = "com.example.example.austinsehnert.smartart.MESSAGE";
-    public ArrayList<String> usernames = new ArrayList<String>();
-    public ArrayList<String> passwords = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public void collectUserInfo(View view){
-        Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
-        Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
+        Intent userReg = new Intent(this, NewUserRegActivity.class);
+        startActivity(userReg);
 
-        EditText name = (EditText) findViewById(R.id.username);
-        String message = name.getText().toString();
-        String fail = "";
 
-        for(String checkName : usernames){
-            if(checkName.equals(message)) {
-                fail = "Not unique username";
-                registrationFailed.putExtra(EXTRA_MESSAGE, fail);
-                startActivity(registrationFailed);
-                return;
-            }
+        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
+        String url = "http://ip.jsontest.com";
+
+        String tag_json_obj = "json_obj_req";
+
+        final TextView mTxtDisplay;
+        mTxtDisplay = (TextView) findViewById(R.id.username);
+
+        JSONObject obj = new JSONObject();
+
+        //String username = NexUserRegActivity
+
+        try {
+            obj.put("username", "meme");
+            obj.put("password", "lol");
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        usernames.add(message);
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url1, obj, new Response.Listener<JSONObject>() {
 
-        EditText password = (EditText) findViewById(R.id.password);
-        String passwordstr = password.getText().toString();
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // mTxtDisplay.setText("Response: " + response.toString());
+                        Log.d("RESPONSE", "Response: " + response.toString());
 
+                    }
 
-        EditText password2 = (EditText) findViewById(R.id.password2);
-        String password2str = password2.getText().toString();
+                }, new Response.ErrorListener() {
 
-        if(! passwordstr.equals(password2str)){
-            fail = "Passwords do not match";
-            registrationFailed.putExtra(EXTRA_MESSAGE, fail);
-            startActivity(registrationFailed);
-            return;
-        }
-        else {
-            message = "Welcome " + message + "!";
-            passwords.add(passwordstr);
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Toast.makeText(getApplicationContext(), "Error while reading server", Toast.LENGTH_SHORT).show();
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    }
+                });
 
-        }
+        // Access the RequestQueue through your singleton class.
+        //MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
-        registrationSuccessful.putExtra(EXTRA_MESSAGE, message);
-
-
-        startActivity(registrationSuccessful);
+        AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
     }
-
-    public void globalArtboard(View view){
-
-    }
-
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        // Tag used to cancel the request
-//        String tag_json_arry = "json_array_req";
-//        String url ="http://proj-309-sb-2.cs.iastate.edu:8080/user/changepass?userId=24&password=dogs";
-//        ProgressDialog pDialog = new ProgressDialog(this);
-//        pDialog.setMessage("Loading...");
-//        pDialog.show(context);
-//        JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-//            @Override
-//                    public void onResponse(JSONArray response) {
-//                Log.d(TAG, response.toString());
-//                pDialog.hide();
-//            }
-//        },new Response.ErrorListener() {
-//            @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d(TAG,"Error: "+ error.getMessage());
-//                pDialog.hide();
-//            }
-//        });
-//
-//        //AppController.getInstance().addToRequestQueue(req, tag_json_arry);
-//        queue.add(req);
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
