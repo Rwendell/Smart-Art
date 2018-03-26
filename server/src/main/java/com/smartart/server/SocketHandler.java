@@ -12,7 +12,9 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
-
+/**
+ * @author rwendell
+ */
 @Component
 public class SocketHandler extends TextWebSocketHandler {
 
@@ -66,6 +68,7 @@ public class SocketHandler extends TextWebSocketHandler {
         byte[] fileContent = Files.readAllBytes(fi.toPath());
 
         /*                                  PRIMARY PLAN (Commented out for demo purposes)                         */
+
 
         //session.sendMessage((new BinaryMessage(fileContent)));
 

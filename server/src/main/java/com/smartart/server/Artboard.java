@@ -2,7 +2,9 @@ package com.smartart.server;
 
 
 import javax.persistence.*;
-
+/**
+ * @author rwendell
+ */
 @Entity
 public class Artboard {
 
