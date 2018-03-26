@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistration;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-
+/**
+ * @author rwendell
+ */
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/artboard") // This means URL's start with /artboard (after Application path)
