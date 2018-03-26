@@ -8,7 +8,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+/**
+ * @author rwendell
+ */
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/user") // This means URL's start with /user (after Application path)
