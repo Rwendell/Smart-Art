@@ -9,6 +9,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -24,7 +25,12 @@ public class SocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-    sessions.remove(session);
+        sessions.remove(session);
+
+
+
+
+
     }
 
     @Override
@@ -32,10 +38,32 @@ public class SocketHandler extends TextWebSocketHandler {
             throws InterruptedException, IOException {
         Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
 
+        //client says they disconnect before they do
+        if(value.containsKey("userDisconnected")){
+            String fc = value.get("userDisconnectednb");
+
+            String[] fcArr = fc.split("\\s+");
+
+            int[] fiBytesAsInt = new int[fc.length()];
+            for(int i = 0;i < fc.length();i++)
+            {
+                fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
+            }
+
+            byte[] fiBytes;
+            fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+            File fi = new File("/resources" + session.getUri() + ".png");
+            Files.write(fi.toPath(),fiBytes,
+                    StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING );
+
+
+        }
+
 
 		for(WebSocketSession webSocketSession : sessions) {
 		    //grabs everything with drawElement
 			webSocketSession.sendMessage(new TextMessage(value.get("drawElement")));
+
 		}
         //session.sendMessage(new TextMessage(value.get("drawElement")));
     }
@@ -66,6 +94,7 @@ public class SocketHandler extends TextWebSocketHandler {
         //remove if not working
         File fi = new File("/resources" + session.getUri() + ".png");
         byte[] fileContent = Files.readAllBytes(fi.toPath());
+
 
         /*                                  PRIMARY PLAN (Commented out for demo purposes)                         */
 
@@ -102,10 +131,10 @@ public class SocketHandler extends TextWebSocketHandler {
 
             String[] fcArr = fc.split("\\s+");
 
-            int[] numbers = new int[fc.length];
+            int[] fiBytes = new int[fc.length];
             for(int i = 0;i < fc.length;i++)
             {
-               numbers[i] = Integer.parseInt(fcArr[i]);
+               fiBytes[i] = Integer.parseInt(fcArr[i]);
             }
          */
     }

@@ -12,18 +12,18 @@ public class Artboard {
   @GeneratedValue(strategy = GenerationType.AUTO)
 
   @Column(name = "ArtboardID")
-  private String artboardId;
+  private Long artboardId;
   @Column(name = "ArtboardName")
   private String artboardName;
   @Column(name = "UserID")
-  private String userId;
+  private Long userId;
 
 
-  public String getArtboardId() {
+  public Long getArtboardId() {
     return artboardId;
   }
 
-  public void setArtboardId(String artboardId) {
+  public void setArtboardId(Long artboardId) {
     this.artboardId = artboardId;
   }
 
@@ -37,11 +37,11 @@ public class Artboard {
   }
 
 
-  public String getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
