@@ -21,14 +21,10 @@ public class ArtboardController {
     @Autowired
     private ArtboardRepository artBoardRepository;
 
-
-
-
-
     @PostMapping(path= "/add", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String addNewArtboard (@RequestParam String artboardName
-            , @RequestParam String userId) {
+            , @RequestParam Long userId) {
 
 
 

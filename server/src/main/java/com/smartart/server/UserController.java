@@ -8,6 +8,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * @author rwendell
  */
@@ -18,8 +22,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-
     private UserRepository UserRepository;
+
+    @Autowired
+    private ArtboardRepository ArtboardRepository;
 
     @PostMapping(path = "/add",  produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
@@ -27,10 +33,6 @@ public class UserController {
             , @RequestParam String password) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
-
-
-
 
         try {
             //noinspection ResultOfMethodCallIgnored    This makes sure the warning is suppresed
@@ -49,9 +51,9 @@ public class UserController {
 
 
             JSONObject userInfo = new JSONObject();
-            userInfo.put("response", "user successfully added");
             userInfo.put("userId", n.getUserId());
             userInfo.put("username", n.getUsername());
+            userInfo.put("response", "user successfully added");
 
             return userInfo.toString();
         }
@@ -90,13 +92,22 @@ public class UserController {
         entered = n.getSalt() + password;
         hashEntered = DigestUtils.sha256Hex(entered);
 
+        List<Long> boardIDs = new CopyOnWriteArrayList<>();
+
+        for(Artboard a : ArtboardRepository.findAll()){
+
+            if (a.getUserId() == n.getUserId()){
+                boardIDs.add(a.getArtboardId());
+            }
+
+        }
 
         if (correct.equals(hashEntered)) {
             JSONObject success = new JSONObject();
-            success.put("response", "login success");
+            success.put("boardIDs",boardIDs);
             success.put("userId", n.getUserId());
             success.put("username", n.getUsername());
-
+            success.put("response", "login success");
             return success.toString();
         }
 
