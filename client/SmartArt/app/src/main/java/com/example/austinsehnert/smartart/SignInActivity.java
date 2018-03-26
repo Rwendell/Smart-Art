@@ -1,57 +1,34 @@
 package com.example.austinsehnert.smartart;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.RequestQueue;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.austinsehnert.smartart.app.AppController;
-
-import org.json.JSONArray;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
+import com.example.austinsehnert.smartart.app.AppController;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
-
+public class SignInActivity extends AppCompatActivity {
+    private static final String TAG = SignInActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_in);
+    }
 
-        Intent signIn = new Intent(this, SignInActivity.class);
-        startActivity(signIn);
-
+    public void signIn(View view){
+        Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
 
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
         String url = "http://ip.jsontest.com";
@@ -65,9 +42,15 @@ public class MainActivity extends AppCompatActivity {
 
         //String username = NexUserRegActivity
 
+        EditText name = (EditText) findViewById(R.id.username);
+        String nameStr = name.getText().toString();
+
+        EditText password = (EditText) findViewById(R.id.password);
+        String passwordStr = password.getText().toString();
+
         try {
-            obj.put("username", "meme");
-            obj.put("password", "lol");
+            obj.put("username", nameStr);
+            obj.put("password", passwordStr);
 
 
         } catch (JSONException e) {
@@ -98,17 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
+        startActivity(registrationSuccessful);
     }
+
+    public void goToNewuserReg(View view){
+        Intent newuser = new Intent(this, NewUserRegActivity.class);
+        startActivity(newuser);
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-

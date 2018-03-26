@@ -12,15 +12,15 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+
+        android:layout_marginEnd="51dp"
+        android:layout_marginStart="51dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toStartOf="@+id/drawing"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/new_btn"
@@ -83,13 +83,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="251dp"
+
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginStart="103dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- Top Row -->
         <LinearLayout
@@ -120,7 +121,7 @@
 
             <ImageButton
                 android:layout_width="@dimen/large_brush"
-                android:layout_height="34dp"
+                android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:background="#FFFF6600"
                 android:contentDescription="@string/paint"
@@ -231,17 +232,14 @@
     </LinearLayout>
 
 
-
-    <com.example.austinsehnert.smartart.Draw
+    <com.example.austinsehnert.smartart.Draw xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/drawing"
-        android:layout_width="fill_parent"
-        android:layout_height="19dp"
-        android:layout_marginBottom="55dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="30dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="480dp"
         android:layout_weight="1"
-        android:background="#FFFFFFFF"/>
+        android:background="#FFFFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </android.support.constraint.ConstraintLayout>
