@@ -14,7 +14,7 @@ function setConnected(connected) {
 
 function connect() {
 
-	ws = new WebSocket('ws://localhost:8080/board/mainBoard');
+	ws = new WebSocket('ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard');//'ws://localhost:8080/board/mainBoard');
 
 	console.log("ws 1:" + ws.url);
 
@@ -25,7 +25,7 @@ function connect() {
 
 
 
-	var ws2 = new WebSocket('ws://localhost:8080/board/2');
+	var ws2 = new WebSocket('ws://proj-309-sb-2.cs.iastate.edu:8080/board/2');//ws://localhost:8080/board/2');
 
     console.log("ws 2:" + ws2.url);
 
@@ -76,6 +76,7 @@ $(function () {
         e.preventDefault();
     });
     $( "#connect" ).click(function() { connect(); });
+    $("#checkbox").click(("#"));
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
 

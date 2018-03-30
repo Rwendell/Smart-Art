@@ -38,7 +38,7 @@ public class SocketHandler extends TextWebSocketHandler {
 
         //client says they disconnect before they do
         if (value.containsKey("userDisconnected")) {
-            String fc = value.get("userDisconnectednb");
+            String fc = value.get("userDisconnected");
 
             String[] fcArr = fc.split("\\s+");
 
@@ -46,13 +46,11 @@ public class SocketHandler extends TextWebSocketHandler {
             for (int i = 0; i < fc.length(); i++) {
                 fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
             }
+            byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);;
 
-            byte[] fiBytes;
-            fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
             File fi = new File("/resources" + session.getUri() + ".png");
             Files.write(fi.toPath(), fiBytes,
                     StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-
 
         }
 
@@ -122,11 +120,13 @@ public class SocketHandler extends TextWebSocketHandler {
 
             String[] fcArr = fc.split("\\s+");
 
-            int[] fiBytes = new int[fc.length];
-            for(int i = 0;i < fc.length;i++)
-            {
-               fiBytes[i] = Integer.parseInt(fcArr[i]);
+            int[] fiBytesAsInt = new int[fc.length()];
+            for (int i = 0; i < fc.length(); i++) {
+                fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
             }
+            byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);;
+
+
          */
     }
 

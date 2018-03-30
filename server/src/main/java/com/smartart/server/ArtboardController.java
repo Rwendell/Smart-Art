@@ -4,10 +4,7 @@ package com.smartart.server;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author rwendell
@@ -20,6 +17,8 @@ public class ArtboardController {
 
     @Autowired
     private ArtboardRepository artBoardRepository;
+
+
 
     @PostMapping(path = "/add", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
@@ -49,4 +48,15 @@ public class ArtboardController {
 
         return fail.toString();
     }
+    /* I don't think this is necessary
+
+    @GetMapping(path = "/getboards", produces = "application/json")
+    public @ResponseBody
+    String getBoards(@RequestParam Long userId){
+
+
+
+    }
+    */
 }
+
