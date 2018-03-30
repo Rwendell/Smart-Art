@@ -14,4 +14,5 @@
     <string name="sml">Small</string>
     <string name="med">Medium</string>
     <string name="lrg">Large</string>
+    <string name="new_usr">New User</string>
 </resources>
