@@ -32,8 +32,8 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global);
 
-        canvas = (Draw)findViewById(R.id.drawing);
-        LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
+        canvas = findViewById(R.id.drawing);
+        LinearLayout paintLayout = findViewById(R.id.paint_colors);
         currentColor = (ImageButton)paintLayout.getChildAt(0);
         currentColor.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
 
@@ -41,15 +41,15 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
 
-        drawBtn = (ImageButton)findViewById(R.id.draw_btn);
+        drawBtn = findViewById(R.id.draw_btn);
         drawBtn.setOnClickListener(this);
 
         canvas.setBrushSize(mediumBrush);
 
-        eraseBtn = (ImageButton)findViewById(R.id.erase_btn);
+        eraseBtn = findViewById(R.id.erase_btn);
         eraseBtn.setOnClickListener(this);
 
-        newBtn = (ImageButton)findViewById(R.id.new_btn);
+        newBtn = findViewById(R.id.new_btn);
         newBtn.setOnClickListener(this);
 
         AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
@@ -68,7 +68,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
         });
         newDialog.show();
 
-        saveBtn = (ImageButton)findViewById(R.id.save_btn);
+        saveBtn = findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(this);
 
     }
@@ -95,7 +95,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
 
             brushDialog.setContentView(R.layout.brush_chooser);
 
-            ImageButton smallBtn = (ImageButton) brushDialog.findViewById(R.id.small_brush);
+            ImageButton smallBtn = brushDialog.findViewById(R.id.small_brush);
             smallBtn.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -106,7 +106,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
                 }
             });
 
-            ImageButton mediumBtn = (ImageButton) brushDialog.findViewById(R.id.medium_brush);
+            ImageButton mediumBtn = brushDialog.findViewById(R.id.medium_brush);
             mediumBtn.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -117,7 +117,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
                 }
             });
 
-            ImageButton largeBtn = (ImageButton) brushDialog.findViewById(R.id.large_brush);
+            ImageButton largeBtn = brushDialog.findViewById(R.id.large_brush);
             largeBtn.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -137,7 +137,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
             brushDialog.setTitle("Eraser size:");
             brushDialog.setContentView(R.layout.brush_chooser);
 
-            ImageButton smallBtn = (ImageButton)brushDialog.findViewById(R.id.small_brush);
+            ImageButton smallBtn = brushDialog.findViewById(R.id.small_brush);
             smallBtn.setOnClickListener(new OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -146,7 +146,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
                     brushDialog.dismiss();
                 }
             });
-            ImageButton mediumBtn = (ImageButton)brushDialog.findViewById(R.id.medium_brush);
+            ImageButton mediumBtn = brushDialog.findViewById(R.id.medium_brush);
             mediumBtn.setOnClickListener(new OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -155,7 +155,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
                     brushDialog.dismiss();
                 }
             });
-            ImageButton largeBtn = (ImageButton)brushDialog.findViewById(R.id.large_brush);
+            ImageButton largeBtn = brushDialog.findViewById(R.id.large_brush);
             largeBtn.setOnClickListener(new OnClickListener(){
                 @Override
                 public void onClick(View v) {

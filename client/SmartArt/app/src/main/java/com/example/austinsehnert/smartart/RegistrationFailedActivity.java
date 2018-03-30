@@ -15,16 +15,16 @@ public class RegistrationFailedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration_failed);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(NewUserRegActivity.EXTRA_MESSAGE);
+        //Intent intent = getIntent();
+        //String message = intent.getStringExtra(NewUserRegActivity.EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.failure_message);
-        textView.setText(message);
-    }
+//        TextView textView = findViewById(R.id.failure_message);
+//        textView.setText(message);
+//    }
 
-    public void returnToUserRegistration(View view) {
-        Intent backToUserRegistration = new Intent(this, NewUserRegActivity.class);
-        startActivity(backToUserRegistration);
+//    public void returnToUserRegistration(View view) {
+//        Intent backToUserRegistration = new Intent(this, NewUserRegActivity.class);
+//        startActivity(backToUserRegistration);
     }
 }

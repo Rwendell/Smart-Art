@@ -36,16 +36,16 @@ public class SignInActivity extends AppCompatActivity {
         String tag_json_obj = "json_obj_req";
 
         final TextView mTxtDisplay;
-        mTxtDisplay = (TextView) findViewById(R.id.username);
+        mTxtDisplay = findViewById(R.id.username);
 
         JSONObject obj = new JSONObject();
 
         //String username = NexUserRegActivity
 
-        EditText name = (EditText) findViewById(R.id.username);
+        EditText name = findViewById(R.id.username);
         String nameStr = name.getText().toString();
 
-        EditText password = (EditText) findViewById(R.id.password);
+        EditText password = findViewById(R.id.password);
         String passwordStr = password.getText().toString();
 
         try {
@@ -84,9 +84,9 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(registrationSuccessful);
     }
 
-    public void goToNewuserReg(View view){
-        Intent newuser = new Intent(this, NewUserRegActivity.class);
-        startActivity(newuser);
-    }
+//    public void goToNewuserReg(View view){
+//        Intent newuser = new Intent(this, NewUserRegActivity.class);
+//        startActivity(newuser);
+//    }
 
 }

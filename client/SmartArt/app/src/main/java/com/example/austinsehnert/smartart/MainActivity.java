@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         String tag_json_obj = "json_obj_req";
 
         final TextView mTxtDisplay;
-        mTxtDisplay = (TextView) findViewById(R.id.username);
+        mTxtDisplay = findViewById(R.id.username);
 
         JSONObject obj = new JSONObject();
 
