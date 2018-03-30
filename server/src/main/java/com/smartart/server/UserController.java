@@ -88,10 +88,6 @@ public class UserController {
         entered = n.getSalt() + password;
         hashEntered = DigestUtils.sha256Hex(entered);
 
-        System.out.println("salt: " + n.getSalt());
-
-        System.out.println("entered hash: " + hashEntered);
-        System.out.println("correct hash: " + correct);
 
         if (correct.equals(hashEntered)) {
             JSONObject success = new JSONObject();

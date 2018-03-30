@@ -23,7 +23,7 @@ public class RegistrationFailedActivity extends AppCompatActivity {
         textView.setText(message);
     }
 
-    public void returnToUserRegistration(View view){
+    public void returnToUserRegistration(View view) {
         Intent backToUserRegistration = new Intent(this, NewUserRegActivity.class);
         startActivity(backToUserRegistration);
     }

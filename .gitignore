@@ -149,6 +149,7 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
+androidTest/
 
 #Java
 # Compiled class file
