@@ -128,7 +128,7 @@ public class WebSocket extends Activity {
     }
 
     public void sendMessage(View view) {
-        EditText editText = (EditText)findViewById(R.id.message);
+        EditText editText = findViewById(R.id.message);
         mWebSocketClient.send(editText.getText().toString());
         editText.setText("");
     }

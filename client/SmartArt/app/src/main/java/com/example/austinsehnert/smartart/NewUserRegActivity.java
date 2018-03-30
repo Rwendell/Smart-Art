@@ -1,5 +1,6 @@
 package com.example.austinsehnert.smartart;
 
+import com.example.austinsehnert.smartart.R;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class NewUserRegActivity extends AppCompatActivity {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
-        EditText name = (EditText) findViewById(R.id.username);
+        EditText name = findViewById(R.id.username);
         String message = name.getText().toString();
         String fail = "";
 
@@ -39,11 +40,11 @@ public class NewUserRegActivity extends AppCompatActivity {
 
         usernames.add(message);
 
-        EditText password = (EditText) findViewById(R.id.password);
+        EditText password = findViewById(R.id.password);
         String passwordstr = password.getText().toString();
 
 
-        EditText password2 = (EditText) findViewById(R.id.password2);
+        EditText password2 = findViewById(R.id.password2);
         String password2str = password2.getText().toString();
 
         if (!passwordstr.equals(password2str)) {

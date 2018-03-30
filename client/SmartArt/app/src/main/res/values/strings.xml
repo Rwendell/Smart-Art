@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SmartArt</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="submit_user_info">Submit</string>
+    <string name="comfirm_password">Confirm Password</string>
+
+    <string name="start_new">New</string>
+    <string name="brush">Brush</string>
+    <string name="erase">Erase</string>
+    <string name="save">Save</string>
+    <string name="paint">Paint</string>
+
+    <string name="sml">Small</string>
+    <string name="med">Medium</string>
+    <string name="lrg">Large</string>
+    <string name="new_usr">New User</string>
+</resources>
