@@ -29,6 +29,7 @@ public class WebSocket extends Activity {
 
         connectWebSocket();
 
+
        /* if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -41,11 +42,13 @@ public class WebSocket extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
+
        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
    /* @Override
+
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -55,7 +58,9 @@ public class WebSocket extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+
     }*/
+
 
     /**
      * A placeholder fragment containing a simple view.
@@ -65,12 +70,16 @@ public class WebSocket extends Activity {
         public PlaceholderFragment() {
         }
 
+
        /* @Override
+
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
+
         }*/
+
     }
 
     private void connectWebSocket() {
@@ -92,13 +101,17 @@ public class WebSocket extends Activity {
             @Override
             public void onMessage(String s) {
                 final String message = s;
+
                 /*runOnUiThread(new Runnable() {
+
                     @Override
                     public void run() {
                         TextView textView = (TextView)findViewById(R.id.messages);
                         textView.setText(textView.getText() + "\n" + message);
                     }
+
                 });*/
+
             }
 
             @Override
@@ -119,4 +132,6 @@ public class WebSocket extends Activity {
         mWebSocketClient.send(editText.getText().toString());
         editText.setText("");
     }
+
 }
+
