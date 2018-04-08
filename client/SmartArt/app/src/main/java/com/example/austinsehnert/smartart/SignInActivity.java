@@ -29,19 +29,9 @@ public class SignInActivity extends AppCompatActivity {
 
     public void signIn(View view){
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
+        Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
-
-
-
-
-
-
-
-
-
-
-
 
         String url = "http://ip.jsontest.com";
 
@@ -95,21 +85,35 @@ public class SignInActivity extends AppCompatActivity {
 
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
-        startActivity(registrationSuccessful);
+        System.out.println("FIRST LINE SHOULD PRINT");
+
+
 
         try {
             String main_response = u_response.getString("response");
             System.out.println(main_response);
             System.out.println(u_response.get("response"));
-        } catch (JSONException e) {
+
+            //if(main_response.contains("Successful")){
+            startActivity(registrationSuccessful);
+            System.out.println("TESTING THIS");
+            //}
+
+            //else{
+               // startActivity(registrationFailed);
+            //}
+        }
+
+        catch (JSONException e) {
             e.printStackTrace();
         }
 
+
     }
 
-//    public void goToNewuserReg(View view){
-//        Intent newuser = new Intent(this, NewUserRegActivity.class);
-//        startActivity(newuser);
-//    }
+    public void goToNewuserReg(View view){
+        Intent newuser = new Intent(this, NewUserRegActivity.class);
+        startActivity(newuser);
+    }
 
 }
