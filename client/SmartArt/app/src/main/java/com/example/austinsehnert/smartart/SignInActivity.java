@@ -29,8 +29,10 @@ public class SignInActivity extends AppCompatActivity {
 
     public void signIn(View view){
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
+        Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
+
         String url = "http://ip.jsontest.com";
 
         String tag_json_obj = "json_obj_req";
@@ -48,24 +50,26 @@ public class SignInActivity extends AppCompatActivity {
         EditText password = findViewById(R.id.password);
         String passwordStr = password.getText().toString();
 
-        try {
-            obj.put("username", nameStr);
-            obj.put("password", passwordStr);
+        String p1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=";
+        String p3 = "&password=";
 
+        String all = p1 + nameStr + p3 + passwordStr;
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        final JSONObject u_response = new JSONObject();
+
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url1, obj, new Response.Listener<JSONObject>() {
+                (Request.Method.POST, all, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
                         // mTxtDisplay.setText("Response: " + response.toString());
                         Log.d("RESPONSE", "Response: " + response.toString());
+                        response = u_response;
 
                     }
+
+
 
                 }, new Response.ErrorListener() {
 
@@ -81,12 +85,35 @@ public class SignInActivity extends AppCompatActivity {
 
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
-        startActivity(registrationSuccessful);
+        System.out.println("FIRST LINE SHOULD PRINT");
+
+
+
+        try {
+            String main_response = u_response.getString("response");
+            System.out.println(main_response);
+            System.out.println(u_response.get("response"));
+
+            //if(main_response.contains("Successful")){
+            startActivity(registrationSuccessful);
+            System.out.println("TESTING THIS");
+            //}
+
+            //else{
+               // startActivity(registrationFailed);
+            //}
+        }
+
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
-//    public void goToNewuserReg(View view){
-//        Intent newuser = new Intent(this, NewUserRegActivity.class);
-//        startActivity(newuser);
-//    }
+    public void goToNewuserReg(View view){
+        Intent newuser = new Intent(this, NewUserRegActivity.class);
+        startActivity(newuser);
+    }
 
 }
