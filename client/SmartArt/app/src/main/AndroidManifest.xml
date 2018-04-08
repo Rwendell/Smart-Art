@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity" />
+        <activity android:name=".WebSocket" />
         <activity android:name=".RegistrationFailedActivity" />
         <activity android:name=".GlobalActivity" />
         <activity android:name=".NewUserRegActivity" />
