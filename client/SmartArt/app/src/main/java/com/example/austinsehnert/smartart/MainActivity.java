@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         Intent signIn = new Intent(this, SignInActivity.class);
         startActivity(signIn);
 
-        Intent socket = new Intent(this, WebSocket.class);
-        startActivity(socket);
+        Intent socketTest = new Intent(this, WebSocket.class);
+        startActivity(socketTest);
 
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
         String url = "http://ip.jsontest.com";
