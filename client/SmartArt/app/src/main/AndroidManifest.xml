@@ -25,7 +25,6 @@
         <activity android:name=".RegistrationFailedActivity" />
         <activity android:name=".GlobalActivity" />
         <activity android:name=".NewUserRegActivity" />
-        <activity android:name=".MySingleton" />
         <activity android:name=".SignInActivity"></activity>
     </application>
 
