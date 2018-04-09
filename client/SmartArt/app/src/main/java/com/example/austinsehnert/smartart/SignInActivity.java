@@ -69,8 +69,6 @@ public class SignInActivity extends AppCompatActivity {
 
                     }
 
-
-
                 }, new Response.ErrorListener() {
 
                     @Override
@@ -85,7 +83,8 @@ public class SignInActivity extends AppCompatActivity {
 
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
-        System.out.println("FIRST LINE SHOULD PRINT");
+        startActivity(registrationSuccessful);
+
 
 
 
@@ -94,20 +93,18 @@ public class SignInActivity extends AppCompatActivity {
             System.out.println(main_response);
             System.out.println(u_response.get("response"));
 
-            //if(main_response.contains("Successful")){
+            if(main_response.contains("Successful")){
             startActivity(registrationSuccessful);
-            System.out.println("TESTING THIS");
-            //}
+            }
 
-            //else{
-               // startActivity(registrationFailed);
-            //}
+            else{
+                startActivity(registrationFailed);
+            }
         }
 
         catch (JSONException e) {
             e.printStackTrace();
         }
-
 
     }
 
