@@ -187,6 +187,7 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
         }
 
         else if(view.getId()==R.id.save_btn) {
+
             AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
             saveDialog.setTitle("Save drawing");
             saveDialog.setMessage("Save drawing to device Gallery?");
