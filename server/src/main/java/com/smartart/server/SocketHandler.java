@@ -37,8 +37,9 @@ public class SocketHandler extends TextWebSocketHandler {
         Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
 
         //client says they disconnect before they do
-        if (value.containsKey("userDisconnected")) {
-            String fc = value.get("userDisconnected");
+
+        if(value.containsKey("save")){
+            String fc = value.get("save");
 
             String[] fcArr = fc.split("\\s+");
 
@@ -48,9 +49,12 @@ public class SocketHandler extends TextWebSocketHandler {
             }
             byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);;
 
-            File fi = new File("/resources" + session.getUri() + ".png");
-            Files.write(fi.toPath(), fiBytes,
-                    StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+
+            ImgUtils.byteArrtoFile(fiBytes, "/resources" + session.getUri() + ".png");
+
+
+
 
         }
 
@@ -82,8 +86,8 @@ public class SocketHandler extends TextWebSocketHandler {
         sessions.add(session);
         //essentially this should be taking a file and converting it to a byte array
         //remove if not working
-        File fi = new File("/resources" + session.getUri() + ".png");
-        byte[] fileContent = Files.readAllBytes(fi.toPath());
+
+        byte[] fileContent = ImgUtils.fileToByteArr("/resources" + session.getUri() + ".png");
 
 
         /*                                  PRIMARY PLAN (Commented out for demo purposes)                         */
