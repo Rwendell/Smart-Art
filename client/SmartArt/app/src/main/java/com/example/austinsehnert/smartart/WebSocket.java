@@ -85,7 +85,7 @@ public class WebSocket extends Activity {
     private void connectWebSocket() {
         URI uri;
         try {
-            uri = new URI("http://proj-309-sb-2.cs.iastate.edu:8080");
+            uri = new URI("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard");
         } catch (URISyntaxException e) {
             e.printStackTrace();
             return;

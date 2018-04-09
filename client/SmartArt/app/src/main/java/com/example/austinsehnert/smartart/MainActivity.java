@@ -52,9 +52,14 @@ public class MainActivity extends AppCompatActivity {
         Intent signIn = new Intent(this, SignInActivity.class);
         startActivity(signIn);
 
+<<<<<<< HEAD
         Intent socketTest = new Intent(this, WebSocket.class);
         //startActivity(socketTest);
 
+=======
+        Intent socketTest = new Intent(this, WebSocket.class);
+        startActivity(socketTest);
+>>>>>>> master
 
     }
 }
