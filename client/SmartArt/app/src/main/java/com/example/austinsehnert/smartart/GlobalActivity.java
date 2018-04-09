@@ -187,38 +187,60 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
         }
 
         else if(view.getId()==R.id.save_btn) {
-            AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-            saveDialog.setTitle("Save drawing");
-            saveDialog.setMessage("Save drawing to device Gallery?");
-            saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    //save drawing
-                }
-            });
-            saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            saveDialog.show();
-            canvas.setDrawingCacheEnabled(true);
-            String imgSaved = MediaStore.Images.Media.insertImage(
-                    getContentResolver(), canvas.getDrawingCache(),
-                    UUID.randomUUID().toString()+".png", "drawing");
-            if(imgSaved!=null){
-                Toast savedToast = Toast.makeText(getApplicationContext(),
-                        "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
-                savedToast.show();
-            }
-            else{
-                Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                        "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
-                unsavedToast.show();
-            }
+//            AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+////            saveDialog.setTitle("Save drawing");
+////            saveDialog.setMessage("Save drawing to device Gallery?");
+////            saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+////                public void onClick(DialogInterface dialog, int which) {
+////                    //save drawing
+////                }
+////            });
+////            saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+////                public void onClick(DialogInterface dialog, int which) {
+////                    dialog.cancel();
+////                }
+////            });
+////            saveDialog.show();
+////            canvas.setDrawingCacheEnabled(true);
+////            String imgSaved = MediaStore.Images.Media.insertImage(
+////                    getContentResolver(), canvas.getDrawingCache(),
+////                    UUID.randomUUID().toString()+".png", "drawing");
+////            if(imgSaved!=null){
+////                Toast savedToast = Toast.makeText(getApplicationContext(),
+////                        "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
+////                savedToast.show();
+////            }
+////            else{
+////                Toast unsavedToast = Toast.makeText(getApplicationContext(),
+////                        "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
+////                unsavedToast.show();
+////            }
+
+
 
             canvas.destroyDrawingCache();
         }
     }
+
+    public static void loadArtBoard(){
+        String fc;
+
+
+
+        String[] fcArr = fc.split("\\s+");
+
+        int[] fiBytesAsInt = new int[fc.length()];
+        for (int i = 0; i < fc.length(); i++) {
+            fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
+        }
+        byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);;
+
+        fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+
+        ImgUtils.byteArrtoFile(fiBytes, "/resources" + session.getUri() + ".png");
+
+    }
+
 
 
 

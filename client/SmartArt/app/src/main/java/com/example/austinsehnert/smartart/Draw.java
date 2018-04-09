@@ -36,7 +36,6 @@ public class Draw extends View{
     private boolean erase = false;
 
 
-
     public Draw(Context context, AttributeSet attrs){
         super(context, attrs);
         drawingInit();
