@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         Intent socketTest = new Intent(this, WebSocket.class);
         startActivity(socketTest);
 
-
     }
 }
 
