@@ -3,6 +3,7 @@
     package="com.example.austinsehnert.smartart">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.AppController"
@@ -20,10 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity" />
+        <activity android:name=".WebSocket" />
         <activity android:name=".RegistrationFailedActivity" />
         <activity android:name=".GlobalActivity" />
         <activity android:name=".NewUserRegActivity" />
-        <activity android:name=".MySingleton"></activity>
+        <activity android:name=".SignInActivity"></activity>
     </application>
 
 </manifest>
