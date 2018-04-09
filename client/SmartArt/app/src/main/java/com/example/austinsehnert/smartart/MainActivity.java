@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(signIn);
 
         Intent socketTest = new Intent(this, WebSocket.class);
-        startActivity(socketTest);
+        //startActivity(socketTest);
 
 
     }
