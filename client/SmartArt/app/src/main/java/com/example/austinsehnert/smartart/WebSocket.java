@@ -13,11 +13,17 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.austinsehnert.smartart.utils.ArrayCopy;
+import com.example.austinsehnert.smartart.utils.ImgUtils;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.SQLOutput;
 
 public class WebSocket extends Activity {
     private WebSocketClient mWebSocketClient;
@@ -30,7 +36,7 @@ public class WebSocket extends Activity {
         connectWebSocket();
 
 
-       /* if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
@@ -82,7 +88,7 @@ public class WebSocket extends Activity {
 
     }
 
-    private void connectWebSocket() {
+     private void connectWebSocket() {
         URI uri;
         try {
             uri = new URI("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard");
@@ -95,14 +101,33 @@ public class WebSocket extends Activity {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
                 Log.i("Websocket", "Opened");
-                mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
+               // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
+                mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 
             @Override
             public void onMessage(String s) {
                 final String message = s;
 
-                /*runOnUiThread(new Runnable() {
+                String fc = s;//s.substring(6);
+
+                String[] fcArr = fc.split("\\s+");
+
+                int[] fiBytesAsInt = new int[fc.length()];
+                for (int i = 0; i < fcArr.length; i++) {
+                    fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
+                }
+                byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);;
+
+                fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+
+                ImgUtils.byteArrtoFile(fiBytes, "test.png");
+
+                System.out.println("file saved!");
+
+
+                System.out.println(s);;
+               /* runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
@@ -128,7 +153,7 @@ public class WebSocket extends Activity {
     }
 
     public void sendMessage(View view) {
-        EditText editText = findViewById(R.id.message);
+        EditText editText = (EditText)findViewById(R.id.message);
         mWebSocketClient.send(editText.getText().toString());
         editText.setText("");
     }
