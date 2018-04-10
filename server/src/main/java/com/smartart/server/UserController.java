@@ -1,7 +1,6 @@
 package com.smartart.server;
 
 
-
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.json.JSONObject;
@@ -27,7 +26,7 @@ public class UserController {
     @Autowired
     private ArtboardRepository ArtboardRepository;
 
-    @PostMapping(path = "/add",  produces = "application/json") //Map ONLY POST Requests
+    @PostMapping(path = "/add", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String addNewUser(@RequestParam String username
             , @RequestParam String password) {
@@ -42,7 +41,7 @@ public class UserController {
             n.setUsername(username);  //sets Username
             n.setAdmin(0);      //default to 0 -> false
             String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
-            String salt_string = RandomStringUtils.random( 8, characters );
+            String salt_string = RandomStringUtils.random(8, characters);
             n.setSalt(salt_string);
             String passSalt = salt_string + password;
             String hashed = DigestUtils.sha256Hex(passSalt);
@@ -95,9 +94,9 @@ public class UserController {
 
         List<Long> boardIDs = new CopyOnWriteArrayList<>();
 
-        for(Artboard a : ArtboardRepository.findAll()){
+        for (Artboard a : ArtboardRepository.findAll()) {
 
-            if (a.getUserId() == n.getUserId()){
+            if (a.getUserId() == n.getUserId()) {
                 boardIDs.add(a.getArtboardId());
             }
 
@@ -105,7 +104,7 @@ public class UserController {
 
         if (correct.equals(hashEntered)) {
             JSONObject success = new JSONObject();
-            success.put("boardIDs",boardIDs);
+            success.put("boardIDs", boardIDs);
             success.put("userId", n.getUserId());
             success.put("username", n.getUsername());
             success.put("response", "login success");
@@ -113,19 +112,20 @@ public class UserController {
         }
 
         JSONObject fail = new JSONObject();
-        fail.put("response","Incorrect Login");
+        fail.put("response", "Incorrect Login");
         return fail.toString();
     }
 
-    @PostMapping(path= "/changepass", produces = "application/json") //Map ONLY POST Requests
-    public @ResponseBody String changePass (@RequestParam Long userId
+    @PostMapping(path = "/changepass", produces = "application/json") //Map ONLY POST Requests
+    public @ResponseBody
+    String changePass(@RequestParam Long userId
             , @RequestParam String password) {
 
 
         User n = UserRepository.findOne(userId);
 
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
-        String salt_string = RandomStringUtils.random( 8, characters );
+        String salt_string = RandomStringUtils.random(8, characters);
         n.setSalt(salt_string);
         String passSalt = salt_string + password;
         String hashed = DigestUtils.sha256Hex(passSalt);
@@ -133,13 +133,9 @@ public class UserController {
         UserRepository.save(n);
 
         JSONObject success = new JSONObject();
-        success.put("response","successfully changed password");
+        success.put("response", "successfully changed password");
 
         return success.toString();
-
-
-
-
 
 
     }

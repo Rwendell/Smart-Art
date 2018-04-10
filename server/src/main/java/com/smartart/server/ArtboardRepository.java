@@ -1,5 +1,7 @@
 package com.smartart.server;
+
 import org.springframework.data.repository.CrudRepository;
+
 /**
  * @author rwendell
  */

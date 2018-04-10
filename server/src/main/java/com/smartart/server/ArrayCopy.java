@@ -24,11 +24,11 @@ package com.smartart.server;
 public class ArrayCopy {
 
 
-    public static byte[] int2byte(int[]src) {
+    public static byte[] int2byte(int[] src) {
         int srcLength = src.length;
-        byte[]dst = new byte[srcLength << 2];
+        byte[] dst = new byte[srcLength << 2];
 
-        for (int i=0; i<srcLength; i++) {
+        for (int i = 0; i < srcLength; i++) {
             int x = src[i];
             int j = i << 2;
             dst[j++] = (byte) ((x >>> 0) & 0xff);

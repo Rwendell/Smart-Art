@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         //WebSocket w = new WebSocket();
        // w.connectWebSocket();
 
-        //w.sendMessage("{\"firstName\": \"John\"}");
+        //Intent socketTest = new Intent(this, WebSocket.class);
+        //startActivity(socketTest);
 
     }
 }
