@@ -6,6 +6,7 @@ package com.example.austinsehnert.smartart;
 
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 
 import android.graphics.Bitmap;
@@ -21,6 +22,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.TypedValue;
 
+import com.example.austinsehnert.smartart.utils.ArrayCopy;
+import com.example.austinsehnert.smartart.utils.ImgUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Draw extends View{
 
@@ -55,6 +61,9 @@ public class Draw extends View{
         pathPaint.setStrokeCap(Paint.Cap.ROUND);
 
         canvasPaint = new Paint(Paint.DITHER_FLAG);
+
+
+
 
         brushSize = getResources().getInteger(R.integer.medium_size);
         lastBrushSize = brushSize;
@@ -129,5 +138,43 @@ public class Draw extends View{
     public void startNew(){
         canvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
+    }
+
+
+
+    public String loadArtboard() {
+
+
+        String fc = "";
+
+
+        String[] fcArr = fc.split("\\s+");
+
+        int[] fiBytesAsInt = new int[fc.length()];
+        for (int i = 0; i < fc.length(); i++) {
+            fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
+        }
+        byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+        ;
+
+        fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+
+        //Context context = getApplicationContext();
+
+
+        File outputDir = .getCacheDir();
+        File outputFile = null;
+        try {
+            outputFile = File.createTempFile("global", ".png", outputDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(outputFile.getAbsolutePath());
+
+
+        ImgUtils.byteArrtoFile(fiBytes, outputFile.getAbsolutePath() + ".png");
+
+        return outputFile.getAbsolutePath();
     }
 }
