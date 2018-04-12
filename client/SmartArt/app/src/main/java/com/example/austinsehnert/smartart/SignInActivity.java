@@ -33,9 +33,8 @@ public class SignInActivity extends AppCompatActivity {
 
 
     /**
-     *
-     * @param view
      * Sing in method for user to enter username and password to sign in to account
+     * @param view
      */
     public void signIn(View view){
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
@@ -120,9 +119,8 @@ public class SignInActivity extends AppCompatActivity {
 
 
     /**
-     *
-     * @param view
      * Brings user to new user registration if user clicks on new user
+     * @param view
      *
      */
     public void goToNewuserReg(View view){
