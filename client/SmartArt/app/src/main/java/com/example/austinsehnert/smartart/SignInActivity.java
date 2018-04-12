@@ -18,6 +18,10 @@ import com.example.austinsehnert.smartart.app.AppController;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+/**
+ * Activity for the user to sign in
+ */
 public class SignInActivity extends AppCompatActivity {
     private static final String TAG = SignInActivity.class.getSimpleName();
 
@@ -27,6 +31,12 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
     }
 
+
+    /**
+     *
+     * @param view
+     * Sing in method for user to enter username and password to sign in to account
+     */
     public void signIn(View view){
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
@@ -108,6 +118,13 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     *
+     * @param view
+     * Brings user to new user registration if user clicks on new user
+     *
+     */
     public void goToNewuserReg(View view){
         Intent newuser = new Intent(this, NewUserRegActivity.class);
         startActivity(newuser);
