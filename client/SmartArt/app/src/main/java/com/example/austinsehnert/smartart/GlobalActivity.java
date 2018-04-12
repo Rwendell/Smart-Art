@@ -22,11 +22,8 @@ import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
 
 
-<<<<<<< HEAD
 public class GlobalActivity extends AppCompatActivity implements OnClickListener {
-=======
-public abstract class GlobalActivity extends AppCompatActivity implements OnClickListener {
->>>>>>> asehnert
+
 
     private Draw canvas;
 
@@ -123,7 +120,6 @@ public abstract class GlobalActivity extends AppCompatActivity implements OnClic
                     canvas.setLastBrushSize(smallBrush);
                     canvas.setErase(false);
                     brushDialog.dismiss();
-=======
             /**
              * Selects the paint color from the options of colors
              * @param view
@@ -139,7 +135,6 @@ public abstract class GlobalActivity extends AppCompatActivity implements OnClic
                     currentColor = (ImageButton) view;
 
                     canvas.setBrushSize(canvas.getLastBrushSize());
->>>>>>> asehnert
                 }
             }
 
@@ -274,7 +269,6 @@ public abstract class GlobalActivity extends AppCompatActivity implements OnClic
             public static void loadArtBoard () {
                 String fc;
 
-<<<<<<< HEAD
             brushDialog.show();
         } else if (view.getId() == R.id.erase_btn) {
             final Dialog brushDialog = new Dialog(this);
@@ -306,19 +300,16 @@ public abstract class GlobalActivity extends AppCompatActivity implements OnClic
                     canvas.setErase(true);
                     canvas.setBrushSize(largeBrush);
                     brushDialog.dismiss();
-=======
 
                 String[] fcArr = fc.split("\\s+");
 
                 int[] fiBytesAsInt = new int[fc.length()];
                 for (int i = 0; i < fc.length(); i++) {
                     fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
->>>>>>> asehnert
                 }
                 byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
                 ;
 
-<<<<<<< HEAD
             brushDialog.show();
         } else if (view.getId() == R.id.new_btn) {
             AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
@@ -391,7 +382,5 @@ public abstract class GlobalActivity extends AppCompatActivity implements OnClic
 
 
 }
-=======
     }
 }
->>>>>>> asehnert
