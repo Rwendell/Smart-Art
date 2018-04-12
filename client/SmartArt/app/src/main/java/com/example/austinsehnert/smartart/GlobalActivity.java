@@ -70,6 +70,10 @@ public class GlobalActivity extends AppCompatActivity implements OnClickListener
 
     }
 
+    /**
+     * Selects the paintbrush when it is selected
+     * @param view
+     */
     public void paintClicked(View view) {
         if (view != currentColor) {
             ImageButton imgView = (ImageButton) view;
