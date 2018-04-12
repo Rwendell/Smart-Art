@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         //WebSocket w = new WebSocket();
        // w.connectWebSocket();
 
-        //Intent socketTest = new Intent(this, WebSocket.class);
+        Intent socketTest = new Intent(this, WebSocket.class);
         //startActivity(socketTest);
+
 
     }
 }
