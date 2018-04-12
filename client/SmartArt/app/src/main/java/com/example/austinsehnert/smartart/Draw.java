@@ -21,6 +21,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.TypedValue;
 
+
 public class Draw extends View{
 
     private Path path;

@@ -25,6 +25,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLOutput;
 
+/**
+ * This class extends the class Actvity, and allows for the websocket connection
+ * on the client side.
+ */
 public class WebSocket extends Activity {
     private WebSocketClient mWebSocketClient;
 
@@ -43,11 +47,14 @@ public class WebSocket extends Activity {
         }*/
     }
 
-
+    /**
+     * Inflate the menu; this adds items to the action bar if it is present.
+     * @param menu menu in which item is too be added to
+     * @return return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        // Inflate the menu; this adds items to the action bar if it is present.
 
        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -88,7 +95,10 @@ public class WebSocket extends Activity {
 
     }
 
-     private void connectWebSocket() {
+    /**
+     * This class actually connects the websockets to the server
+     */
+    private void connectWebSocket() {
         URI uri;
         try {
             uri = new URI("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard");
@@ -98,6 +108,10 @@ public class WebSocket extends Activity {
         }
 
         mWebSocketClient = new WebSocketClient(uri) {
+            /**
+             * Establishes connection to server and sends message
+             * @param serverHandshake handshake param confirms that server is correct
+             */
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
                 Log.i("Websocket", "Opened");
@@ -105,6 +119,10 @@ public class WebSocket extends Activity {
                 mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 
+            /**
+             * Gets data back from server, converts it as an image, and saves the file
+             * @param s message received from server
+             */
             @Override
             public void onMessage(String s) {
                 final String message = s;
@@ -139,23 +157,24 @@ public class WebSocket extends Activity {
 
             }
 
+            /**
+             * Lets you know in the log if the connection closes
+             */
             @Override
             public void onClose(int i, String s, boolean b) {
                 Log.i("Websocket", "Closed " + s);
             }
 
+            /**
+             * Lets you know if there is an error that occured
+             * @param e specific exception being handled
+             */
             @Override
             public void onError(Exception e) {
                 Log.i("Websocket", "Error " + e.getMessage());
             }
         };
         mWebSocketClient.connect();
-    }
-
-    public void sendMessage(View view) {
-        EditText editText = (EditText)findViewById(R.id.message);
-        mWebSocketClient.send(editText.getText().toString());
-        editText.setText("");
     }
 
 }

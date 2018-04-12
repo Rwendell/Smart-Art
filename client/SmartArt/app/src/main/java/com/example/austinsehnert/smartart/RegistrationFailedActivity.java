@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * This activity brings the user back to the registration screen when called
+ */
 public class RegistrationFailedActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.example.austinsehnert.smartart.MESSAGE";
 
@@ -16,7 +19,10 @@ public class RegistrationFailedActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Returns user to NewUserRegActivity when called
+     * @param view the specific view on screen
+     */
     public void returnToSignIn(View view) {
         Intent backToUserRegistration = new Intent(this, NewUserRegActivity.class);
         startActivity(backToUserRegistration);
