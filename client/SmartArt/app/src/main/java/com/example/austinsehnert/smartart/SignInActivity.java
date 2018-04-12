@@ -121,7 +121,6 @@ public class SignInActivity extends AppCompatActivity {
     /**
      * Brings user to new user registration if user clicks on new user
      * @param view
-     *
      */
     public void goToNewuserReg(View view){
         Intent newuser = new Intent(this, NewUserRegActivity.class);
