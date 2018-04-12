@@ -9,6 +9,9 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+/**
+ * This class allows for new users to register, making a new username/password
+ */
 public class NewUserRegActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.example.austinsehnert.smartart.MESSAGE";
@@ -19,6 +22,11 @@ public class NewUserRegActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user_reg);
     }
 
+    /**
+     * Takes in user info and allows users to make a new password. If new password and its
+     * confirmation do not add up, the user is prompted to enter information in again
+     * @param view the view in which the actvity is displayed in
+     */
     public void collectUserInfo(View view) {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
