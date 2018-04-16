@@ -1,9 +1,11 @@
-package com.smartart.server;
+package com.smartart.model;
 
 import javax.persistence.*;
 
 /**
  * @author rwendell
+ *
+ * This is the model for our User,  All methods are self explanatory.
  */
 @Entity
 public class User {

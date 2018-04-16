@@ -1,4 +1,4 @@
-package com.smartart.server;
+package com.smartart.utils;
 
 
 /*
@@ -23,7 +23,11 @@ package com.smartart.server;
 
 public class ArrayCopy {
 
-
+    /**
+     *This method converts a byte array into an integer array where one integer represents one byte
+     * @param src the src integer array
+     * @return converts the integer array into a byte array
+     */
     public static byte[] int2byte(int[] src) {
         int srcLength = src.length;
         byte[] dst = new byte[srcLength << 2];

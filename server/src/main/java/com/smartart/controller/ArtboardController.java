@@ -1,6 +1,8 @@
-package com.smartart.server;
+package com.smartart.controller;
 
 
+import com.smartart.model.Artboard;
+import com.smartart.model.ArtboardRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * @author rwendell
+ *
+ *
+ * This Class controls the Artboards
  */
 
 @Controller    // This means that this class is a Controller
@@ -19,7 +24,12 @@ public class ArtboardController {
     private ArtboardRepository artBoardRepository;
 
 
-
+    /**
+     * Creates a new Artboard
+     * @param artboardName name of board
+     * @param userId userID from board being created
+     * @return JSON response fail or success
+     */
     @PostMapping(path = "/add", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String addNewArtboard(@RequestParam String artboardName
