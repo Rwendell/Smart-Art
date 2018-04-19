@@ -1,10 +1,12 @@
-package com.smartart.server;
+package com.smartart.model;
 
 
 import javax.persistence.*;
 
 /**
  * @author rwendell
+ *
+ * This is the model for our Artboard,  All methods are self explanatory.
  */
 @Entity
 public class Artboard {
@@ -18,6 +20,7 @@ public class Artboard {
     private String artboardName;
     @Column(name = "UserID")
     private Long userId;
+
 
 
     public Long getArtboardId() {

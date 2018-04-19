@@ -7,12 +7,18 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 /**
  * @author rwendell
+ *
+ * This creates handlers for the websockets at an endpoint
  */
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
 
+    /**
+     * Adds a websocket handler to the server
+     * @param registry  the registry
+     */
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 
         //just make different handlers then you should be able to handle each thing differently

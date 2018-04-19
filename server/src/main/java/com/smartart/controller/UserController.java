@@ -1,6 +1,8 @@
-package com.smartart.server;
+package com.smartart.controller;
 
 
+import com.smartart.model.Artboard;
+import com.smartart.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.json.JSONObject;
@@ -13,6 +15,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author rwendell
+ *
+ * This Class controls the Users
  */
 
 @Controller    // This means that this class is a Controller
@@ -21,11 +25,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class UserController {
 
     @Autowired
-    private UserRepository UserRepository;
+    private com.smartart.model.UserRepository UserRepository;
 
     @Autowired
-    private ArtboardRepository ArtboardRepository;
+    private com.smartart.model.ArtboardRepository ArtboardRepository;
 
+    /**
+     * Tries to add a new user
+     * @param username the username
+     * @param password the password
+     * @return a JSON with the required information for the client to determine if a user could be added
+     */
     @PostMapping(path = "/add", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String addNewUser(@RequestParam String username
@@ -76,6 +86,13 @@ public class UserController {
     }
 
 
+    /**
+     * Simple login checker
+     *
+     * @param username the username
+     * @param password the password
+     * @return A success or a fail with different values for each
+     */
     @PostMapping(path = "/login", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String loginUser(@RequestParam String username
@@ -116,6 +133,12 @@ public class UserController {
         return fail.toString();
     }
 
+    /**
+     * Allows user to change password
+     * @param userId the user's unique ID generated from the mySQL database
+     * @param password the user's new password
+     * @return returns a success on password change
+     */
     @PostMapping(path = "/changepass", produces = "application/json") //Map ONLY POST Requests
     public @ResponseBody
     String changePass(@RequestParam Long userId

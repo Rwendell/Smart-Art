@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ *Lets user know if signin was successful
+ */
 public class DisplayMessageActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +19,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Moves user to global artboard to paint
+     * @param view
+     */
     public void proceedToGlobal(View view) {
         Intent toGlobal = new Intent(this, GlobalActivity.class);
         startActivity(toGlobal);

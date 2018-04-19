@@ -56,7 +56,7 @@ public class WebSocket extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
 
-       // getMenuInflater().inflate(R.menu.main, menu);
+        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -115,7 +115,7 @@ public class WebSocket extends Activity {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
                 Log.i("Websocket", "Opened");
-               // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
+                // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
                 mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 
