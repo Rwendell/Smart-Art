@@ -1,12 +1,20 @@
-package com.smartart.server;
+package com.smartart.utils;
 
 import java.io.*;
 
 /**
  * @author rwendell
+ *
+ * This Class is used to manipulate the image in order to change it from an image to a byte array and back
+ *
  */
 public class ImgUtils {
 
+    /**
+     *  This method takes an image and converts it into a byte array
+     * @param path the path to the image file
+     * @return returns a byte array of the image
+     */
     public static byte[] fileToByteArr(String path){
         File file = new File(path);
 
@@ -27,6 +35,11 @@ public class ImgUtils {
 
     }
 
+    /**
+     *This method takes a byte array and converts it to an image which is saved
+     * @param b byte array of the image
+     * @param path location to save the file
+     */
     public static void byteArrtoFile(byte[] b, String path){
 
         try {

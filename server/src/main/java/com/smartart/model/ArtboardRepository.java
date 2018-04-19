@@ -1,4 +1,4 @@
-package com.smartart.server;
+package com.smartart.model;
 
 import org.springframework.data.repository.CrudRepository;
 

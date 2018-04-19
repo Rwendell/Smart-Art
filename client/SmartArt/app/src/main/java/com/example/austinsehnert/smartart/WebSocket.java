@@ -95,10 +95,14 @@ public class WebSocket extends Activity {
 
     }
 
+
     /**
      * This class actually connects the websockets to the server
      */
     private void connectWebSocket() {
+
+    void connectWebSocket() {
+
         URI uri;
         try {
             uri = new URI("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard");
@@ -177,5 +181,15 @@ public class WebSocket extends Activity {
         mWebSocketClient.connect();
     }
 
+
+    public void sendMessage(View view) {
+        EditText editText = findViewById(R.id.message);
+        mWebSocketClient.send(editText.getText().toString());
+        editText.setText("");
+
+    }
+
+
+}
 }
 
