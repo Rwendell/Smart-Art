@@ -25,6 +25,10 @@ import org.json.JSONObject;
 public class SignInActivity extends AppCompatActivity {
     private static final String TAG = SignInActivity.class.getSimpleName();
 
+
+    String response_string = "";
+    JSONObject rsp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +36,13 @@ public class SignInActivity extends AppCompatActivity {
     }
 
 
+
     /**
      * Sign in method for user to enter username and password to sign in to account
+     *
      * @param view
      */
-    public void signIn(View view){
+    public void signIn(View view) throws JSONException {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
@@ -64,7 +70,9 @@ public class SignInActivity extends AppCompatActivity {
 
         String all = p1 + nameStr + p3 + passwordStr;
 
-        final JSONObject u_response = new JSONObject();
+
+
+
 
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -73,8 +81,12 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         // mTxtDisplay.setText("Response: " + response.toString());
+
                         Log.d("RESPONSE", "Response: " + response.toString());
-                        response = u_response;
+                        rsp = response;
+                        System.out.println(rsp.toString());
+                        response_string = rsp.toString();
+                        //System.out.println(response.toString());
 
                     }
 
@@ -90,29 +102,22 @@ public class SignInActivity extends AppCompatActivity {
         // Access the RequestQueue through your singleton class.
         //MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
-        AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
+       // AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
-        startActivity(registrationSuccessful);
-
-
+        //startActivity(registrationSuccessful);
 
 
-        try {
-            String main_response = u_response.getString("response");
-            System.out.println(main_response);
-            System.out.println(u_response.get("response"));
+        String main_response = response_string;
+        System.out.println(response_string + "TEST");
+        //System.out.println(main_response);
+        //System.out.println(u_response.get("response"));
 
-            if(main_response.contains("Successful")){
+        if (main_response.contains("Successful")) {
+            System.out.println("hi");
             startActivity(registrationSuccessful);
-            }
 
-            else{
-                startActivity(registrationFailed);
-            }
-        }
-
-        catch (JSONException e) {
-            e.printStackTrace();
+        } else if (main_response.contains("Incorrect Login")) {
+            startActivity(registrationFailed);
         }
 
     }
@@ -120,9 +125,10 @@ public class SignInActivity extends AppCompatActivity {
 
     /**
      * Brings user to new user registration if user clicks on new user
+     *
      * @param view
      */
-    public void goToNewuserReg(View view){
+    public void goToNewuserReg(View view) {
         Intent newuser = new Intent(this, NewUserRegActivity.class);
         startActivity(newuser);
     }

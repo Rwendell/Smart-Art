@@ -82,9 +82,9 @@ public class Draw extends View{
 
         //canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 
-        Bitmap.
+       // Bitmap.
 
-        canvas = new Canvas(canvasBitmap);
+        //canvas = new Canvas(canvasBitmap);
     }
 
     @Override
@@ -203,7 +203,7 @@ public class Draw extends View{
         //Context context = getApplicationContext();
 
 
-        File outputDir = .getCacheDir();
+        File outputDir = new File("test");//.getCacheDir();
         File outputFile = null;
         try {
             outputFile = File.createTempFile("global", ".png", outputDir);
