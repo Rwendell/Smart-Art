@@ -4,8 +4,6 @@ package com.example.austinsehnert.smartart.app;
  * Created by austinsehnert on 2/19/18.
  */
 
-import com.example.austinsehnert.smartart.utils.LruBitmapCache;
-
 import android.app.Application;
 import android.text.TextUtils;
 
@@ -13,6 +11,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.example.austinsehnert.smartart.utils.LruBitmapCache;
 
 public class AppController extends Application {
     public static final String TAG = AppController.class

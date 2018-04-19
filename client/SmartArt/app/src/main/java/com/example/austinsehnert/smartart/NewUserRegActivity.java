@@ -1,13 +1,10 @@
 package com.example.austinsehnert.smartart;
 
-import com.example.austinsehnert.smartart.R;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-
-import java.util.ArrayList;
 
 /**
  * This class allows for new users to register, making a new username/password
