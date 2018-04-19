@@ -33,7 +33,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
     /**
-     * Sing in method for user to enter username and password to sign in to account
+     * Sign in method for user to enter username and password to sign in to account
      * @param view
      */
     public void signIn(View view){
