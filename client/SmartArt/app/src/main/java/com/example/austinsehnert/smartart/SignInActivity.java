@@ -70,11 +70,6 @@ public class SignInActivity extends AppCompatActivity {
 
         String all = p1 + nameStr + p3 + passwordStr;
 
-
-
-
-
-
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.POST, all, null, new Response.Listener<JSONObject>() {
 
