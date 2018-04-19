@@ -56,7 +56,7 @@ public class WebSocket extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
 
-       // getMenuInflater().inflate(R.menu.main, menu);
+        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -95,14 +95,10 @@ public class WebSocket extends Activity {
 
     }
 
-
     /**
      * This class actually connects the websockets to the server
      */
     private void connectWebSocket() {
-
-    void connectWebSocket() {
-
         URI uri;
         try {
             uri = new URI("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard");
@@ -119,7 +115,7 @@ public class WebSocket extends Activity {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
                 Log.i("Websocket", "Opened");
-               // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
+                // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
                 mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 
@@ -181,15 +177,5 @@ public class WebSocket extends Activity {
         mWebSocketClient.connect();
     }
 
-
-    public void sendMessage(View view) {
-        EditText editText = findViewById(R.id.message);
-        mWebSocketClient.send(editText.getText().toString());
-        editText.setText("");
-
-    }
-
-
-}
 }
 
