@@ -2,28 +2,18 @@ package com.example.austinsehnert.smartart;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.sql.SQLOutput;
 
 /**
  * This class extends the class Actvity, and allows for the websocket connection
@@ -56,7 +46,7 @@ public class WebSocket extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
 
-       // getMenuInflater().inflate(R.menu.main, menu);
+        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -115,7 +105,7 @@ public class WebSocket extends Activity {
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
                 Log.i("Websocket", "Opened");
-               // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
+                // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
                 mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 

@@ -1,6 +1,8 @@
 package com.smartart.server;
 
 import com.google.gson.Gson;
+import com.smartart.utils.ArrayCopy;
+import com.smartart.utils.ImgUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
@@ -8,16 +10,15 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author rwendell
+ *
+ * This handler is responsible for dealing with all websocket sessions
  */
 @Component
 public class SocketHandler extends TextWebSocketHandler {
@@ -31,9 +32,19 @@ public class SocketHandler extends TextWebSocketHandler {
 
     }
 
+
+    /**
+     * This handles all incoming messages and deals with them accordingly
+     * @param session   The session
+     * @param message  The message that is recieved
+     * @throws InterruptedException
+     * @throws IOException
+     */
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message)
             throws InterruptedException, IOException {
+
+
         Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
 
         //client says they disconnect before they do
@@ -43,17 +54,14 @@ public class SocketHandler extends TextWebSocketHandler {
 
             String[] fcArr = fc.split("\\s+");
 
-            int[] fiBytesAsInt = new int[fc.length()];
+            int[] fiBytesAsInt = new int[fcArr.length];
             for (int i = 0; i < fc.length(); i++) {
                 fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
             }
-            byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);;
+            byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
 
-            fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
 
             ImgUtils.byteArrtoFile(fiBytes, "/resources" + session.getUri() + ".png");
-
-
 
 
         }
@@ -67,7 +75,7 @@ public class SocketHandler extends TextWebSocketHandler {
         //session.sendMessage(new TextMessage(value.get("drawElement")));
     }
 
-    //Remove if not working
+
     @Override
     public void handleBinaryMessage(WebSocketSession session, BinaryMessage message) {
 
@@ -80,6 +88,12 @@ public class SocketHandler extends TextWebSocketHandler {
     }
 
 
+    /**
+     * A simple hack to send a byte array on connection
+     *
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
@@ -117,7 +131,7 @@ public class SocketHandler extends TextWebSocketHandler {
         */
 
 
-        session.sendMessage((new TextMessage(fc)));
+        session.sendMessage((new TextMessage("image: " + fc)));
 
         /*
             making fc into an array again:

@@ -6,21 +6,17 @@ package com.example.austinsehnert.smartart;
 
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
-
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.view.MotionEvent;
-
-import android.view.View;
-import android.graphics.Color;
-
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
@@ -84,8 +80,11 @@ public class Draw extends View{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        canvas = new Canvas(canvasBitmap);
+        //canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+
+       // Bitmap.
+
+        //canvas = new Canvas(canvasBitmap);
     }
 
     @Override
@@ -204,8 +203,11 @@ public class Draw extends View{
         //Context context = getApplicationContext();
 
 
+
         /*
-        File outputDir = .getCacheDir();
+
+        File outputDir = new File("test");//.getCacheDir();
+
         File outputFile = null;
         try {
             outputFile = File.createTempFile("global", ".png", outputDir);

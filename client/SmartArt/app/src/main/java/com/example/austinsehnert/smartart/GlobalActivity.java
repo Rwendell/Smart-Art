@@ -1,25 +1,14 @@
 package com.example.austinsehnert.smartart;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-import android.provider.MediaStore;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
-
-import com.example.austinsehnert.smartart.utils.ArrayCopy;
-import com.example.austinsehnert.smartart.utils.ImgUtils;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 
 /**
