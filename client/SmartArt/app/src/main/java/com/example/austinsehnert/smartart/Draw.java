@@ -203,7 +203,11 @@ public class Draw extends View{
         //Context context = getApplicationContext();
 
 
+
+        /*
+
         File outputDir = new File("test");//.getCacheDir();
+
         File outputFile = null;
         try {
             outputFile = File.createTempFile("global", ".png", outputDir);
@@ -216,7 +220,8 @@ public class Draw extends View{
 
         ImgUtils.byteArrtoFile(fiBytes, outputFile.getAbsolutePath() + ".png");
 
-        return outputFile.getAbsolutePath();
+        */
+        return null; //outputFile.getAbsolutePath();
     }
 }
 

@@ -46,11 +46,11 @@ public class SignInActivity extends AppCompatActivity {
         final Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
-        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
-
-        String url = "http://ip.jsontest.com";
-
-        String tag_json_obj = "json_obj_req";
+//        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
+//
+//        String url = "http://ip.jsontest.com";
+//
+//        String tag_json_obj = "json_obj_req";
 
         final TextView mTxtDisplay;
         mTxtDisplay = findViewById(R.id.username);
@@ -79,7 +79,7 @@ public class SignInActivity extends AppCompatActivity {
 
                         Log.d("RESPONSE", "Response: " + response.toString());
                         rsp = response;
-                        System.out.println(rsp.toString());
+                        System.out.println("RSP: " + rsp.toString());
                         response_string = rsp.toString();
                         //System.out.println(response.toString());
 
@@ -96,6 +96,7 @@ public class SignInActivity extends AppCompatActivity {
                             startActivity(registrationFailed);
                         }
 
+                        startActivity(registrationSuccessful);
 
 
                     }
@@ -112,14 +113,14 @@ public class SignInActivity extends AppCompatActivity {
         // Access the RequestQueue through your singleton class.
         //MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
-       // AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
+        // AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
         //startActivity(registrationSuccessful);
 
 
         /*String main_response = response_string;
         System.out.println(response_string + "TEST");
-        //System.out.println(main_response);
+        System.out.println("MAIN RESPONSE: " + main_response);
         //System.out.println(u_response.get("response"));
 
         if (main_response.contains("Successful")) {
@@ -129,6 +130,8 @@ public class SignInActivity extends AppCompatActivity {
         } else if (main_response.contains("Incorrect Login")) {
             startActivity(registrationFailed);
         }*/
+
+        //startActivity(registrationSuccessful);
 
     }
 
