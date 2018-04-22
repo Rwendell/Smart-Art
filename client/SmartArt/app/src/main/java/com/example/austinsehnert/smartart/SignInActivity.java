@@ -70,6 +70,8 @@ public class SignInActivity extends AppCompatActivity {
 
         String all = p1 + nameStr + p3 + passwordStr;
 
+
+
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.POST, all, null, new Response.Listener<JSONObject>() {
 
@@ -130,8 +132,9 @@ public class SignInActivity extends AppCompatActivity {
         } else if (main_response.contains("Incorrect Login")) {
             startActivity(registrationFailed);
         }*/
-
+        
         //startActivity(registrationSuccessful);
+
 
     }
 
