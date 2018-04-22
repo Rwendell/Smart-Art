@@ -46,18 +46,8 @@ public class SignInActivity extends AppCompatActivity {
         final Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
        final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
-//        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
-//
-//        String url = "http://ip.jsontest.com";
-//
-//        String tag_json_obj = "json_obj_req";
 
-        final TextView mTxtDisplay;
-        mTxtDisplay = findViewById(R.id.username);
-
-        JSONObject obj = new JSONObject();
-
-        //String username = NexUserRegActivity
+        final TextView mTxtDisplay = findViewById(R.id.username);
 
         EditText name = findViewById(R.id.username);
         String nameStr = name.getText().toString();
@@ -83,22 +73,28 @@ public class SignInActivity extends AppCompatActivity {
                         rsp = response;
                         System.out.println("RSP: " + rsp.toString());
                         response_string = rsp.toString();
-                        //System.out.println(response.toString());
+                        System.out.println(response.toString());
 
                         /*String main_response = response_string;
                         System.out.println(response_string + "TEST");
-                        //System.out.println(main_response);
+                        System.out.println(main_response);
                         //System.out.println(u_response.get("response"));
+                        Log.i("test", "THIS IS A TEST");
 
                         if (main_response.contains("Successful")) {
-                            System.out.println("hi");
+                            //System.out.println("hi");
+
                             startActivity(registrationSuccessful);
 
-                        } else if (main_response.contains("Incorrect Login")) {
+                        } else {
                             startActivity(registrationFailed);
                         }*/
 
+<<<<<<< HEAD
 
+=======
+                        //startActivity(registrationSuccessful);
+>>>>>>> master
 
                     }
 
@@ -111,6 +107,7 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
 
+<<<<<<< HEAD
         // Access the RequestQueue through your singleton class.
         //MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
 
@@ -135,6 +132,8 @@ public class SignInActivity extends AppCompatActivity {
         //startActivity(registrationSuccessful);
 
 
+=======
+>>>>>>> master
     }
 
 
