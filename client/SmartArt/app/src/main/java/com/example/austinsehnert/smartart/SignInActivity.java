@@ -35,8 +35,6 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
     }
 
-
-
     /**
      * Sign in method for user to enter username and password to sign in to account
      *
@@ -60,6 +58,7 @@ public class SignInActivity extends AppCompatActivity {
 
         String all = p1 + nameStr + p3 + passwordStr;
 
+        Log.d("test", "THIS IS A TEST");
 
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -68,21 +67,15 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         // mTxtDisplay.setText("Response: " + response.toString());
+                        Log.d("second", "TESTING");
 
                         Log.d("RESPONSE", "Response: " + response.toString());
                         rsp = response;
-                        System.out.println("RSP: " + rsp.toString());
                         response_string = rsp.toString();
-                        System.out.println(response.toString());
 
                         String main_response = response_string;
-                        System.out.println(response_string + "TEST");
-                        System.out.println(main_response);
-                        //System.out.println(u_response.get("response"));
-                        Log.i("test", "THIS IS A TEST");
 
                         if (main_response.contains("Successful")) {
-                            //System.out.println("hi");
 
                             startActivity(registrationSuccessful);
 
@@ -90,7 +83,7 @@ public class SignInActivity extends AppCompatActivity {
                             startActivity(registrationFailed);
                         }
 
-                        //startActivity(registrationSuccessful);
+                        startActivity(registrationSuccessful);
 
                     }
 
@@ -102,7 +95,6 @@ public class SignInActivity extends AppCompatActivity {
                         VolleyLog.d(TAG, "Error: " + error.getMessage());
                     }
                 });
-
     }
 
 
