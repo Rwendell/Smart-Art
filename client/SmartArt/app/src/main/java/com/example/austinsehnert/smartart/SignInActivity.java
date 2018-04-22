@@ -44,7 +44,7 @@ public class SignInActivity extends AppCompatActivity {
      */
     public void signIn(View view) throws JSONException {
         final Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
-        final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
+       final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
 //        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
 //
@@ -85,7 +85,7 @@ public class SignInActivity extends AppCompatActivity {
                         response_string = rsp.toString();
                         //System.out.println(response.toString());
 
-                        String main_response = response_string;
+                        /*String main_response = response_string;
                         System.out.println(response_string + "TEST");
                         //System.out.println(main_response);
                         //System.out.println(u_response.get("response"));
@@ -96,9 +96,8 @@ public class SignInActivity extends AppCompatActivity {
 
                         } else if (main_response.contains("Incorrect Login")) {
                             startActivity(registrationFailed);
-                        }
+                        }*/
 
-                        startActivity(registrationSuccessful);
 
 
                     }
@@ -120,7 +119,7 @@ public class SignInActivity extends AppCompatActivity {
         //startActivity(registrationSuccessful);
 
 
-        /*String main_response = response_string;
+        String main_response = response_string;
         System.out.println(response_string + "TEST");
         System.out.println("MAIN RESPONSE: " + main_response);
         //System.out.println(u_response.get("response"));
@@ -131,8 +130,8 @@ public class SignInActivity extends AppCompatActivity {
 
         } else if (main_response.contains("Incorrect Login")) {
             startActivity(registrationFailed);
-        }*/
-        
+        }
+
         //startActivity(registrationSuccessful);
 
 

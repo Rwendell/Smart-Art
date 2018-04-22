@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
         //WebSocket w = new WebSocket();
        // w.connectWebSocket();
 
-        Intent socketTest = new Intent(this, WebSocket.class);
+        //Intent socketTest = new Intent(this, WebSocket.class);
 
 
-        Intent intent = new Intent(this, SocketService.class);
-        startService(intent);
+       /* Intent intent = new Intent(this, SocketService.class);
+        startService(intent);*/
 
     }
 }
