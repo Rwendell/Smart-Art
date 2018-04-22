@@ -88,7 +88,7 @@ public class WebSocket extends Activity {
     /**
      * This class actually connects the websockets to the server
      */
-    private void connectWebSocket() {
+    public void connectWebSocket() {
         URI uri;
         try {
             uri = new URI("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard");

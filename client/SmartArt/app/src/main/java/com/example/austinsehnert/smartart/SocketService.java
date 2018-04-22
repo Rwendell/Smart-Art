@@ -18,6 +18,7 @@ public class SocketService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-
+        WebSocket w = new WebSocket();
+        w.connectWebSocket();
     }
 }
