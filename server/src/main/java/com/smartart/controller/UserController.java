@@ -100,6 +100,20 @@ public class UserController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
+        JSONObject fail = new JSONObject();
+        fail.put("response", "Incorrect Login");
+
+        try {
+            //noinspection ResultOfMethodCallIgnored    This makes sure the warning is suppresed
+            UserRepository.findByUsername(username).getUsername();
+        } catch (NullPointerException ex){
+
+
+            return fail.toString();
+
+        }
+
+
 
         User n = UserRepository.findByUsername(username);
 
@@ -128,8 +142,7 @@ public class UserController {
             return success.toString();
         }
 
-        JSONObject fail = new JSONObject();
-        fail.put("response", "Incorrect Login");
+
         return fail.toString();
     }
 
