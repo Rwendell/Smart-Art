@@ -7,5 +7,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ArtboardRepository extends CrudRepository<Artboard, Long> {
     public Artboard findByArtboardName(String artboard);
+    public Artboard findByArtboardId(Long artboardID);
+    public Artboard findByIsPrivate(Long isPrivate);
 
 }
