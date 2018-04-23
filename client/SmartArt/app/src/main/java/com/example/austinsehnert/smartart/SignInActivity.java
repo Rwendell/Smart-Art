@@ -59,6 +59,8 @@ public class SignInActivity extends AppCompatActivity {
         String all = p1 + nameStr + p3 + passwordStr;
 
         Log.d("test", "THIS IS A TEST");
+        System.out.println("YO");
+
 
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest

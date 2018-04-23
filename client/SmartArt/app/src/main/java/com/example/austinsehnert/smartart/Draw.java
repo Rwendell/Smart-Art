@@ -89,7 +89,7 @@ public class Draw extends View{
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+        //canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(path, pathPaint);
     }
 
@@ -106,7 +106,7 @@ public class Draw extends View{
                 path.lineTo(xCord, yCord);
                 break;
             case MotionEvent.ACTION_UP:
-                canvas.drawPath(path, pathPaint);
+                //canvas.drawPath(path, pathPaint);
                 path.reset();
                 break;
             default:
