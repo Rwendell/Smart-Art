@@ -135,6 +135,7 @@ public class UserController {
 
         if (correct.equals(hashEntered)) {
             JSONObject success = new JSONObject();
+            success.put("isAdmin", n.getAdmin());
             success.put("boardIDs", boardIDs);
             success.put("userId", n.getUserId());
             success.put("username", n.getUsername());
