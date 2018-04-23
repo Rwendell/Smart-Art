@@ -89,7 +89,11 @@ public class Draw extends View{
 
     @Override
     protected void onDraw(Canvas canvas) {
+<<<<<<< HEAD
         //canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+=======
+//        canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+>>>>>>> asehnert
         canvas.drawPath(path, pathPaint);
     }
 

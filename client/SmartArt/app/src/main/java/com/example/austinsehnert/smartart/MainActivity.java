@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent global = new Intent(this, GlobalActivity.class);
         startActivity(global);
 
+        //Intent g = new Intent(this, GlobalActivity.class);
+        //startActivity(g);
+
        /* Intent socket = new Intent(this, WebSocket.class);
         startActivity(socket);*/
 
