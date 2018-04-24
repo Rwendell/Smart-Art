@@ -96,7 +96,7 @@ import org.json.JSONObject;
 
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
-        startActivity(registrationSuccessful);
+        //startActivity(registrationSuccessful);
 
 
         try {
@@ -104,7 +104,7 @@ import org.json.JSONObject;
             System.out.println(main_response);
             System.out.println(u_response.get("response"));
 
-            if (main_response.contains("Successful")) {
+            if (main_response.contains("success")) {
                 startActivity(registrationSuccessful);
             } else {
                 startActivity(registrationFailed);
