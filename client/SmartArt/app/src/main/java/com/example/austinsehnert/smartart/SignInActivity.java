@@ -38,7 +38,7 @@ import org.json.JSONObject;
      *
      * @param view
      */
-<<<<<<< HEAD
+
     public void signIn(View view) {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
@@ -46,11 +46,7 @@ import org.json.JSONObject;
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
 
         String url = "http://ip.jsontest.com";
-=======
-    public void signIn(View view) throws JSONException {
-        final Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
-       final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
->>>>>>> plicata2
+
 
         String tag_json_obj = "json_obj_req";
 
@@ -83,15 +79,11 @@ import org.json.JSONObject;
                     public void onResponse(JSONObject response) {
                         // mTxtDisplay.setText("Response: " + response.toString());
 
-<<<<<<< HEAD
 
                         Log.d("RESPONSE", "Response: " + response.toString());
                         response = u_response;
-=======
-                        Log.d("RESPONSE", "Response: " + response.toString());
-                        rsp = response;
-                        System.out.println("RSP: " + rsp.toString());
-                        response_string = rsp.toString();
+                        System.out.println("RSP: " + u_response.toString());
+                        //response_string = rsp.toString();
                         System.out.println(response.toString());
 
                         /*String main_response = response_string;
@@ -112,7 +104,7 @@ import org.json.JSONObject;
                         //startActivity(registrationSuccessful);
 
 
->>>>>>> plicata2
+
                     }
 
                 }, new Response.ErrorListener() {

@@ -81,17 +81,15 @@ public class Draw extends View{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        //canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 
-       // Bitmap.
-
-        //canvas = new Canvas(canvasBitmap);
+        canvas = new Canvas(canvasBitmap);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-        //canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+        canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(path, pathPaint);
     }
 
@@ -109,7 +107,7 @@ public class Draw extends View{
                 path.lineTo(xCord, yCord);
                 break;
             case MotionEvent.ACTION_UP:
-                //canvas.drawPath(path, pathPaint);
+                canvas.drawPath(path, pathPaint);
                 path.reset();
                 break;
             default:
