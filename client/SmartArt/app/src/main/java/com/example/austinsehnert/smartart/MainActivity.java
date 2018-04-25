@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        
        //Intent signIn = new Intent(this, SignInActivity.class);
        //startActivity(signIn);
         Intent global = new Intent(this, GlobalActivity.class);
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Intent g = new Intent(this, GlobalActivity.class);
         //startActivity(g);
+
 
        /* Intent socket = new Intent(this, WebSocket.class);
         startActivity(socket);*/
@@ -29,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Intent socketTest = new Intent(this, WebSocket.class);
 
-
         Intent socket = new Intent(this, SocketService.class);
         startService(socket);
+
+
+        Intent g = new Intent(this, GlobalActivity.class);
+        startActivity(g);
 
     }
 }
