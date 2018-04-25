@@ -21,6 +21,8 @@ import android.view.View;
 import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
 
+import org.java_websocket.client.WebSocketClient;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -41,7 +43,6 @@ public class Draw extends View{
     private float lastBrushSize;
 
     private boolean erase = false;
-
 
 
     /**
@@ -89,7 +90,7 @@ public class Draw extends View{
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+        //canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(path, pathPaint);
     }
 
@@ -101,6 +102,7 @@ public class Draw extends View{
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xCord, yCord);
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(xCord, yCord);

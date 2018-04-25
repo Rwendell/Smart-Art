@@ -36,7 +36,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * Sign in method for user to enter username and password to sign in to account
      *
@@ -90,11 +89,8 @@ public class SignInActivity extends AppCompatActivity {
                             startActivity(registrationFailed);
                         }*/
 
-<<<<<<< HEAD
-
-=======
                         //startActivity(registrationSuccessful);
->>>>>>> master
+
 
                     }
 
@@ -107,33 +103,6 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
 
-<<<<<<< HEAD
-        // Access the RequestQueue through your singleton class.
-        //MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
-
-        // AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
-
-        //startActivity(registrationSuccessful);
-
-
-        String main_response = response_string;
-        System.out.println(response_string + "TEST");
-        System.out.println("MAIN RESPONSE: " + main_response);
-        //System.out.println(u_response.get("response"));
-
-        if (main_response.contains("Successful")) {
-            System.out.println("hi");
-            startActivity(registrationSuccessful);
-
-        } else if (main_response.contains("Incorrect Login")) {
-            startActivity(registrationFailed);
-        }
-
-        //startActivity(registrationSuccessful);
-
-
-=======
->>>>>>> master
     }
 
 
