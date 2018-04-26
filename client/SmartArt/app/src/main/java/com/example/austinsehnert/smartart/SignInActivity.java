@@ -82,19 +82,14 @@ import org.json.JSONObject;
 
                         Log.d("RESPONSE", "Response: " + response.toString());
                         response = u_response;
-                        System.out.println("RSP: " + u_response.toString());
                         //response_string = rsp.toString();
-                        System.out.println(response.toString());
 
                         
                         /*String main_response = response_string;
-                        System.out.println(response_string + "TEST");
-                        System.out.println(main_response);
-                        //System.out.println(u_response.get("response"));
+
                         Log.i("test", "THIS IS A TEST");
 
                         if (main_response.contains("Successful")) {
-                            //System.out.println("hi");
 
                             startActivity(registrationSuccessful);
 
@@ -125,8 +120,7 @@ import org.json.JSONObject;
         try {
             String main_response = u_response.getString("response");
             Log.d("r", main_response);
-            System.out.println(main_response);
-            System.out.println(u_response.get("response"));
+
 
             if (main_response.contains("success")) {
                 startActivity(registrationSuccessful);
@@ -136,6 +130,8 @@ import org.json.JSONObject;
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        startActivity(registrationSuccessful);
 
     }
 
