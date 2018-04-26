@@ -40,7 +40,7 @@ import org.json.JSONObject;
      */
 
     public void signIn(View view) {
-        Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
+        Intent registrationSuccessful = new Intent(this, GlobalActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
@@ -112,9 +112,6 @@ import org.json.JSONObject;
                     }
                 });
 
-        // Access the RequestQueue through your singleton class.
-        //MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
-
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
         try {
@@ -131,6 +128,7 @@ import org.json.JSONObject;
             e.printStackTrace();
         }
 
+        //DELETE THIS WHEN THE SERVER IS RUNNING
         startActivity(registrationSuccessful);
 
     }
