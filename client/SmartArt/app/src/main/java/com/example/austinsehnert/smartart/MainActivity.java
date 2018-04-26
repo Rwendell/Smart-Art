@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-       //Intent signIn = new Intent(this, SignInActivity.class);
-       //startActivity(signIn);
-        Intent global = new Intent(this, GlobalActivity.class);
-        startActivity(global);
+       Intent signIn = new Intent(this, SignInActivity.class);
+       startActivity(signIn);
+        //Intent global = new Intent(this, GlobalActivity.class);
+        //startActivity(global);
 
         //Intent g = new Intent(this, GlobalActivity.class);
         //startActivity(g);
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         startService(socket);
 
 
-        Intent g = new Intent(this, GlobalActivity.class);
-        startActivity(g);
+        //Intent g = new Intent(this, GlobalActivity.class);
+        //startActivity(g);
 
     }
 }

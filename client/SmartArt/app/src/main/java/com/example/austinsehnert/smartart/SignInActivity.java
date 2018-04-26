@@ -86,6 +86,7 @@ import org.json.JSONObject;
                         //response_string = rsp.toString();
                         System.out.println(response.toString());
 
+                        
                         /*String main_response = response_string;
                         System.out.println(response_string + "TEST");
                         System.out.println(main_response);
@@ -124,10 +125,11 @@ import org.json.JSONObject;
 
         try {
             String main_response = u_response.getString("response");
+            Log.d("r", main_response);
             System.out.println(main_response);
             System.out.println(u_response.get("response"));
 
-            if (main_response.contains("Successful")) {
+            if (main_response.contains("success")) {
                 startActivity(registrationSuccessful);
             } else {
                 startActivity(registrationFailed);
