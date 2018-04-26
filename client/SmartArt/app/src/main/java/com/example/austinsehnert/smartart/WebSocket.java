@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
  * on the client side.
  */
 public class WebSocket extends Activity {
-    public WebSocketClient mWebSocketClient;
+    public static WebSocketClient mWebSocketClient;
 
 
 

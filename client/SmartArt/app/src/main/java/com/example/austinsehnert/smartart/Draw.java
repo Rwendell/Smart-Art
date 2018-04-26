@@ -18,6 +18,7 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
+
 import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
 
@@ -69,10 +70,6 @@ public class Draw extends View{
         pathPaint.setStrokeJoin(Paint.Join.ROUND);
         pathPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
-
-
-
-
         brushSize = getResources().getInteger(R.integer.medium_size);
         lastBrushSize = brushSize;
     }

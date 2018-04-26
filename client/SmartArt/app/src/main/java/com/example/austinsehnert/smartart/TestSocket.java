@@ -1,6 +1,12 @@
 package com.example.austinsehnert.smartart;
 
+import android.os.Bundle;
+
 import org.java_websocket.client.WebSocketClient;
+
+import java.net.URI;
+
+import static com.example.austinsehnert.smartart.WebSocket.mWebSocketClient;
 
 
 /**
@@ -11,9 +17,25 @@ import org.java_websocket.client.WebSocketClient;
 
 public class TestSocket {
 
-    public WebSocketClient w = SocketSingleton.getSocket();
 
-    public void testSend() {
-        w.send("tests");
+    protected void onCreate(Bundle savedInstanceState) {
+        onCreate(savedInstanceState);
+        testSend();
+
     }
+
+
+    public static void testSend() {
+
+        WebSocketClient w = SocketSingleton.getSocket();
+
+        w.send("{\"drawElement\": \"John\"}");
+
+        /*mWebSocketClient.connect();
+
+        mWebSocketClient.send("{\"drawElement\": \"John\"}");*/
+
+
+    }
+
 }
