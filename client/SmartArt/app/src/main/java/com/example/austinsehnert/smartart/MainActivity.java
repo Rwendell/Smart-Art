@@ -15,8 +15,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       /*Intent signIn = new Intent(this, SignInActivity.class);
+      /* Intent signIn = new Intent(this, SignInActivity.class);
         startActivity(signIn);*/
+
+        Intent signIn = new Intent(this, GlobalActivity.class);
+        startActivity(signIn);
 
        /* Intent socket = new Intent(this, WebSocket.class);
         startActivity(socket);*/
@@ -26,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Intent socketTest = new Intent(this, WebSocket.class);
 
-        Intent socket = new Intent(this, SocketService.class);
+       /* Intent socket = new Intent(this, SocketService.class);
         startService(socket);
 
 
         Intent g = new Intent(this, GlobalActivity.class);
-        startActivity(g);
+        startActivity(g);*/
 
     }
 }

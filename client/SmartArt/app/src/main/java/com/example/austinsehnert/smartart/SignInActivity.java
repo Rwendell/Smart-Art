@@ -42,8 +42,9 @@ public class SignInActivity extends AppCompatActivity {
      * @param view
      */
     public void signIn(View view) throws JSONException {
+
         final Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
-       final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
+        final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
 
         final TextView mTxtDisplay = findViewById(R.id.username);
