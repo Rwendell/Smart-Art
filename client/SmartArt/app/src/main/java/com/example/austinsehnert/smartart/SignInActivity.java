@@ -38,6 +38,7 @@ import org.json.JSONObject;
      *
      * @param view
      */
+
     public void signIn(View view) {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
@@ -45,6 +46,7 @@ import org.json.JSONObject;
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
 
         String url = "http://ip.jsontest.com";
+
 
         String tag_json_obj = "json_obj_req";
 
@@ -68,7 +70,6 @@ import org.json.JSONObject;
 
         final JSONObject u_response = new JSONObject();
 
-        Log.d("test", "THIS IS A TEST");
 
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -77,8 +78,33 @@ import org.json.JSONObject;
                     @Override
                     public void onResponse(JSONObject response) {
                         // mTxtDisplay.setText("Response: " + response.toString());
+
+
                         Log.d("RESPONSE", "Response: " + response.toString());
                         response = u_response;
+                        System.out.println("RSP: " + u_response.toString());
+                        //response_string = rsp.toString();
+                        System.out.println(response.toString());
+
+                        
+                        /*String main_response = response_string;
+                        System.out.println(response_string + "TEST");
+                        System.out.println(main_response);
+                        //System.out.println(u_response.get("response"));
+                        Log.i("test", "THIS IS A TEST");
+
+                        if (main_response.contains("Successful")) {
+                            //System.out.println("hi");
+
+                            startActivity(registrationSuccessful);
+
+                        } else {
+                            startActivity(registrationFailed);
+                        }*/
+
+                        //startActivity(registrationSuccessful);
+
+
 
                     }
 
@@ -96,11 +122,9 @@ import org.json.JSONObject;
 
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
 
-        //startActivity(registrationSuccessful);
-
-
         try {
             String main_response = u_response.getString("response");
+            Log.d("r", main_response);
             System.out.println(main_response);
             System.out.println(u_response.get("response"));
 

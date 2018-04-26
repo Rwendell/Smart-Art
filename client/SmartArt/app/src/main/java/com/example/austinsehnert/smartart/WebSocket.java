@@ -2,6 +2,7 @@ package com.example.austinsehnert.smartart;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,9 @@ import java.net.URISyntaxException;
  * on the client side.
  */
 public class WebSocket extends Activity {
-    private WebSocketClient mWebSocketClient;
+    public WebSocketClient mWebSocketClient;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,8 @@ public class WebSocket extends Activity {
              */
             @Override
             public void onOpen(ServerHandshake serverHandshake) {
+                SocketSingleton.setSocket(mWebSocketClient);
+
                 Log.i("Websocket", "Opened");
                 // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
                 mWebSocketClient.send("{\"drawElement\": \"John\"}");
@@ -165,6 +170,11 @@ public class WebSocket extends Activity {
             }
         };
         mWebSocketClient.connect();
+
+        //mWebSocketClient.send
+
+        //SocketSingleton.setSocket(mWebSocketClient);
+
     }
 
 }
