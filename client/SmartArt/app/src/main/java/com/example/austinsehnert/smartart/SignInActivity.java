@@ -39,6 +39,7 @@ import org.json.JSONObject;
      * @param view
      */
 
+
     public void signIn(View view) {
         Intent registrationSuccessful = new Intent(this, DisplayMessageActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);

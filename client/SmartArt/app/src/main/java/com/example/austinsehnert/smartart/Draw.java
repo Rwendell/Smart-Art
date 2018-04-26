@@ -101,7 +101,6 @@ public class Draw extends View{
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xCord, yCord);
-
                 break;
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(xCord, yCord);
