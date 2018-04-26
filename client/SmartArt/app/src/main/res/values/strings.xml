@@ -15,4 +15,5 @@
     <string name="med">Medium</string>
     <string name="lrg">Large</string>
     <string name="new_usr">New User</string>
+    <string name="title_activity_select_board">SelectBoardActivity</string>
 </resources>

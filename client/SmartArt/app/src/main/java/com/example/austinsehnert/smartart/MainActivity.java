@@ -13,29 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-       Intent signIn = new Intent(this, SignInActivity.class);
-       startActivity(signIn);
-        //Intent global = new Intent(this, GlobalActivity.class);
-        //startActivity(global);
+       //Intent signIn = new Intent(this, SignInActivity.class);
+       //startActivity(signIn);
+
+       Intent select = new Intent(this, SelectBoardActivity.class);
+       startActivity(select);
 
         //Intent g = new Intent(this, GlobalActivity.class);
         //startActivity(g);
-
-
-       /* Intent socket = new Intent(this, WebSocket.class);
-        startActivity(socket);*/
-
-        //WebSocket w = new WebSocket();
-       // w.connectWebSocket();
-
-        //Intent socketTest = new Intent(this, WebSocket.class);
 
         Intent socket = new Intent(this, SocketService.class);
         startService(socket);
-
-
-        //Intent g = new Intent(this, GlobalActivity.class);
-        //startActivity(g);
 
     }
 }

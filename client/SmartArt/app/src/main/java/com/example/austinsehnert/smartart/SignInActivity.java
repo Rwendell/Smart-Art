@@ -40,7 +40,7 @@ import org.json.JSONObject;
      */
 
     public void signIn(View view) {
-        Intent registrationSuccessful = new Intent(this, GlobalActivity.class);
+        final Intent registrationSuccessful = new Intent(this, GlobalActivity.class);
         Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
 
         String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
@@ -68,12 +68,16 @@ import org.json.JSONObject;
 
         String all = p1 + nameStr + p3 + passwordStr;
 
-        final JSONObject u_response = new JSONObject();
+        JSONObject u_response = new JSONObject();
+
+        String myString = "";
 
 
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.POST, all, null, new Response.Listener<JSONObject>() {
+
+
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -81,27 +85,13 @@ import org.json.JSONObject;
 
 
                         Log.d("RESPONSE", "Response: " + response.toString());
-                        response = u_response;
-                        //response_string = rsp.toString();
+                        //u_response = this.response;
+                        //myString = response.toString();
 
-                        
-                        /*String main_response = response_string;
-
-                        Log.i("test", "THIS IS A TEST");
-
-                        if (main_response.contains("Successful")) {
-
-                            startActivity(registrationSuccessful);
-
-                        } else {
-                            startActivity(registrationFailed);
-                        }*/
-
-                        //startActivity(registrationSuccessful);
-
-
-
+                        //Log.d("u", "U: " + u_response);
                     }
+
+                    //SignInActivity.
 
                 }, new Response.ErrorListener() {
 
@@ -112,11 +102,13 @@ import org.json.JSONObject;
                     }
                 });
 
+
         AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
+        //jsObjRequest.getM
 
         try {
             String main_response = u_response.getString("response");
-            Log.d("r", main_response);
+            //Log.d("r", "MAIN RESPONSE HERE:" + main_response);
 
 
             if (main_response.contains("success")) {
@@ -129,9 +121,11 @@ import org.json.JSONObject;
         }
 
         //DELETE THIS WHEN THE SERVER IS RUNNING
-        startActivity(registrationSuccessful);
+        //startActivity(registrationSuccessful);
 
     }
+
+
 
 
         /**
@@ -143,5 +137,9 @@ import org.json.JSONObject;
             Intent newuser = new Intent(this, NewUserRegActivity.class);
             startActivity(newuser);
         }
+
+//        static String getString(){
+//            return myString;
+//        }
     }
 
