@@ -27,13 +27,13 @@ public class TestSocket {
 
     public static void testSend() {
 
-        WebSocketClient w = SocketSingleton.getSocket();
+       /* WebSocketClient w = SocketSingleton.getSocket();
 
-        w.send("{\"drawElement\": \"John\"}");
+        w.send("{\"drawElement\": \"John\"}");*/
 
-        /*mWebSocketClient.connect();
+        //mWebSocketClient.connect();
 
-        mWebSocketClient.send("{\"drawElement\": \"John\"}");*/
+        mWebSocketClient.send("{\"drawElement\": \"John\"}");
 
 
     }

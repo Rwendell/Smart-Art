@@ -40,54 +40,7 @@ public class WebSocket extends Activity {
         }*/
     }
 
-    /**
-     * Inflate the menu; this adds items to the action bar if it is present.
-     * @param menu menu in which item is too be added to
-     * @return return true
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-
-        // getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-   /* @Override
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-
-    }*/
-
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-
-       /* @Override
-
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-
-        }*/
-
-    }
-
+    
     /**
      * This class actually connects the websockets to the server
      */
@@ -110,7 +63,6 @@ public class WebSocket extends Activity {
                 SocketSingleton.setSocket(mWebSocketClient);
 
                 Log.i("Websocket", "Opened");
-                // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
                 mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 
@@ -169,11 +121,6 @@ public class WebSocket extends Activity {
                 Log.i("Websocket", "Error " + e.getMessage());
             }
         };
-        mWebSocketClient.connect();
-
-        //mWebSocketClient.send
-
-        //SocketSingleton.setSocket(mWebSocketClient);
 
     }
 

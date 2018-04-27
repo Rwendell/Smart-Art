@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         //TestSocket t = new TestSocket();
 
-        TestSocket.testSend();
+       // TestSocket.testSend();
 
         Log.d("Hi", "hello");
 
