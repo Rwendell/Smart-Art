@@ -13,11 +13,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-       //Intent signIn = new Intent(this, SignInActivity.class);
-       //startActivity(signIn);
+       Intent signIn = new Intent(this, SignInActivity.class);
+       startActivity(signIn);
 
-       Intent select = new Intent(this, SelectBoardActivity.class);
-       startActivity(select);
+       //Intent select = new Intent(this, SelectBoardActivity.class);
+       //startActivity(select);
 
         //Intent g = new Intent(this, GlobalActivity.class);
         //startActivity(g);

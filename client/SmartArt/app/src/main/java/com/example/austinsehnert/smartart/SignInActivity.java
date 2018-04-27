@@ -20,126 +20,73 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-/**
- * Activity for the user to sign in
- */
-        public class SignInActivity extends AppCompatActivity {
-    private static final String TAG = SignInActivity.class.getSimpleName();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
-    }
-
-
     /**
-     * Sign in method for user to enter username and password to sign in to account
-     *
-     * @param view
-     */
+    * Activity for the user to sign in
+    */
+    public class SignInActivity extends AppCompatActivity {
+        private static final String TAG = SignInActivity.class.getSimpleName();
 
-    public void signIn(View view) {
-        final Intent registrationSuccessful = new Intent(this, GlobalActivity.class);
-        Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
-
-        String url1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=meme&password=lol";
-
-        String url = "http://ip.jsontest.com";
-
-
-        String tag_json_obj = "json_obj_req";
-
-        final TextView mTxtDisplay;
-        mTxtDisplay = findViewById(R.id.username);
-
-        JSONObject obj = new JSONObject();
-
-        //String username = NexUserRegActivity
-
-        EditText name = findViewById(R.id.username);
-        String nameStr = name.getText().toString();
-
-        EditText password = findViewById(R.id.password);
-        String passwordStr = password.getText().toString();
-
-        String p1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=";
-        String p3 = "&password=";
-
-        String all = p1 + nameStr + p3 + passwordStr;
-
-        JSONObject u_response = new JSONObject();
-
-        String myString = "";
-
-
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, all, null, new Response.Listener<JSONObject>() {
-
-
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // mTxtDisplay.setText("Response: " + response.toString());
-
-
-                        Log.d("RESPONSE", "Response: " + response.toString());
-                        //u_response = this.response;
-                        //myString = response.toString();
-
-                        //Log.d("u", "U: " + u_response);
-                    }
-
-                    //SignInActivity.
-
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //Toast.makeText(getApplicationContext(), "Error while reading server", Toast.LENGTH_SHORT).show();
-                        VolleyLog.d(TAG, "Error: " + error.getMessage());
-                    }
-                });
-
-
-        AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
-        //jsObjRequest.getM
-
-        try {
-            String main_response = u_response.getString("response");
-            //Log.d("r", "MAIN RESPONSE HERE:" + main_response);
-
-
-            if (main_response.contains("success")) {
-                startActivity(registrationSuccessful);
-            } else {
-                startActivity(registrationFailed);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_sign_in);
         }
-
-        //DELETE THIS WHEN THE SERVER IS RUNNING
-        //startActivity(registrationSuccessful);
-
-    }
-
-
 
 
         /**
-        * Brings user to new user registration if user clicks on new user
-        *
-        * @param view
-        */
+         * Sign in method for user to enter username and password to sign in to account
+         *
+         * @param view
+         */
+        public void signIn(View view) {
+            final Intent registrationSuccessful = new Intent(this, GlobalActivity.class);
+            final Intent registrationFailed = new Intent(this, RegistrationFailedActivity.class);
+
+            String tag_json_obj = "json_obj_req";
+
+            EditText name = findViewById(R.id.username);
+            String nameStr = name.getText().toString();
+
+            EditText password = findViewById(R.id.password);
+            String passwordStr = password.getText().toString();
+
+            String p1 = "http://proj-309-sb-2.cs.iastate.edu:8080/user/login?username=";
+            String p3 = "&password=";
+
+            String all = p1 + nameStr + p3 + passwordStr;
+
+            JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                    (Request.Method.POST, all, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d("RESPONSE", "Response: " + response.toString());
+                            if (response.toString().contains("success")) {
+                                startActivity(registrationSuccessful);
+                            } else {
+                                startActivity(registrationFailed);
+                            }
+                        }
+
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        }
+                    });
+
+            AppController.getInstance().addToRequestQueue(jsObjRequest, tag_json_obj);
+        }
+
+        /**
+         * Brings user to new user registration if user clicks on new user
+         *
+         * @param view
+         */
         public void goToNewuserReg(View view) {
             Intent newuser = new Intent(this, NewUserRegActivity.class);
             startActivity(newuser);
         }
-
-//        static String getString(){
-//            return myString;
-//        }
     }
 
