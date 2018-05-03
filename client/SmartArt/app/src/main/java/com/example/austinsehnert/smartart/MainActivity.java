@@ -25,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
        //Intent signIn = new Intent(this, SignInActivity.class);
        //startActivity(signIn);
-        /*Intent global = new Intent(this, GlobalActivity.class);
-        startActivity(global);*/
+       Intent global = new Intent(this, GlobalActivity.class);
+        startActivity(global);
 
 
        new WebSocketEcho().run();
+
+       /*Intent i = new Intent(this, WebSocket.class);
+       startService(i);*/
 
     }
 
@@ -41,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
                     .build();
 
             Request request = new Request.Builder()
-                    .url("ws://echo.websocket.org")
+                    .url("ws://proj-309-sb-2.cs.iastate.edu:8080/board/mainBoard")
                     .build();
+
             ws=client.newWebSocket(request, this);
 
             // Trigger shutdown of the dispatcher's executor so this process can exit cleanly.
@@ -51,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onOpen(WebSocket webSocket, Response response) {
-            webSocket.send("Hellp...");
-            webSocket.send("...World!");
-            webSocket.send(ByteString.decodeHex("deadbeef"));
-            webSocket.close(1000, "Goodbye, World!");
+           // webSocket.send("Hellp...");
+           // webSocket.send("...World!");
+          //  webSocket.send(ByteString.decodeHex("deadbeef"));
+          //  webSocket.close(1000, "Goodbye, World!");
         }
 
         @Override

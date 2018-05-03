@@ -14,6 +14,7 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
 
 import org.java_websocket.client.WebSocketClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -81,7 +84,6 @@ public class Draw extends View{
 
     public void sendMessage() {
         MainActivity.ws.send("Hellp...");
-
     }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -113,8 +115,16 @@ public class Draw extends View{
                 break;
             case MotionEvent.ACTION_UP:
                 canvas.drawPath(path, pathPaint);
+                //ws.send("{\"drawElement\":  + " "path.toString() + pathPaint.toString()) + "}";
+                JSONObject test = new JSONObject();
+                try {
+                    test.put("drawElement", path.toString() + pathPaint.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.d("WEBSOCKET", test.toString());
+                ws.send(test.toString());
 
-                //ws.send(canvas.drawPath(path, pathPaint));
                 path.reset();
                 break;
             default:
