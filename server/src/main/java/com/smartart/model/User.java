@@ -20,6 +20,7 @@ public class User {
     private String hash;
     private String salt;
     private long admin;
+    private long banned;
 
     public Long getUserId() {
         return userId;
@@ -64,5 +65,9 @@ public class User {
     public void setAdmin(long admin) {
         this.admin = admin;
     }
+
+    public long getBanned(){ return banned;}
+
+    public void setBanned(long banned){this.banned = banned;}
 
 }
