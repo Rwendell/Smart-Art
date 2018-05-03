@@ -6,7 +6,7 @@ import org.java_websocket.client.WebSocketClient;
 
 import java.net.URI;
 
-import static com.example.austinsehnert.smartart.WebSocket.mWebSocketClient;
+//import static com.example.austinsehnert.smartart.WebSocket.mWebSocketClient;
 
 
 /**
@@ -33,7 +33,7 @@ public class TestSocket {
 
         //mWebSocketClient.connect();
 
-        mWebSocketClient.send("{\"drawElement\": \"John\"}");
+      //  mWebSocketClient.send("{\"drawElement\": \"John\"}");
 
 
     }

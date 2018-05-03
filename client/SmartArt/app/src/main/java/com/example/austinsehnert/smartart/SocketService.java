@@ -21,6 +21,6 @@ public class SocketService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         WebSocket w = new WebSocket();
         w.connectWebSocket();
-        Log.d("Service", "Started");
+       // Log.d("Service", "Started");
     }
 }

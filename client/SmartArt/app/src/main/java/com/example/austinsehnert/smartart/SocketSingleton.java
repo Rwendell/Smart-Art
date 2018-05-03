@@ -16,14 +16,11 @@ public class SocketSingleton {
     public static void setSocket(WebSocketClient ws) {
         SocketSingleton.socket = ws;
 
-
-
     }
 
     public static WebSocketClient getSocket() {
 
         return SocketSingleton.socket;
-
     }
 
     public static void sendMessage(String message){

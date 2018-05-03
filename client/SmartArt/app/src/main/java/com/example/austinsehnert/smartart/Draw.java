@@ -27,6 +27,8 @@ import org.java_websocket.client.WebSocketClient;
 import java.io.File;
 import java.io.IOException;
 
+import static com.example.austinsehnert.smartart.MainActivity.ws;
+
 
 /**
  * Draw class for user to draw on the canvas
@@ -104,6 +106,8 @@ public class Draw extends View{
                 break;
             case MotionEvent.ACTION_UP:
                 canvas.drawPath(path, pathPaint);
+
+                //ws.send(canvas.drawPath(path, pathPaint));
                 path.reset();
                 break;
             default:
