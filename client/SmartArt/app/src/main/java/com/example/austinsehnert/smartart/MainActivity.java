@@ -16,6 +16,7 @@ import okio.ByteString;
 public class MainActivity extends AppCompatActivity {
 
     public static WebSocket ws;
+    public  static OkHttpClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
     class WebSocketEcho extends WebSocketListener {
 
         private void run() {
-            OkHttpClient client = new OkHttpClient.Builder()
+            client = new OkHttpClient.Builder()
                     .readTimeout(0, TimeUnit.MILLISECONDS)
                     .build();
 
             Request request = new Request.Builder()
                     .url("ws://echo.websocket.org")
                     .build();
-            client.newWebSocket(request, this);
+            ws=client.newWebSocket(request, this);
 
             // Trigger shutdown of the dispatcher's executor so this process can exit cleanly.
             client.dispatcher().executorService().shutdown();

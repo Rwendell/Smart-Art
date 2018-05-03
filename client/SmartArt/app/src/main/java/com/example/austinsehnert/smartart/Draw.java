@@ -27,6 +27,9 @@ import org.java_websocket.client.WebSocketClient;
 import java.io.File;
 import java.io.IOException;
 
+import okhttp3.*;
+import okio.ByteString;
+
 import static com.example.austinsehnert.smartart.MainActivity.ws;
 
 
@@ -76,6 +79,10 @@ public class Draw extends View{
         lastBrushSize = brushSize;
     }
 
+    public void sendMessage() {
+        MainActivity.ws.send("Hellp...");
+
+    }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
