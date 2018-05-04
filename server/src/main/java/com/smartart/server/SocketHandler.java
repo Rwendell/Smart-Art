@@ -71,7 +71,13 @@ public class SocketHandler extends TextWebSocketHandler {
             //grabs everything with drawElement
 
             if(!session.equals(webSocketSession)) {
-                webSocketSession.sendMessage(new TextMessage(value.get("drawElement")));
+
+                if(value.containsKey("drawElement")) {
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawCoords").toString()));
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawColor").toString()));
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawThick").toString()));
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawErase").toString()));
+                }
             }
 
         }

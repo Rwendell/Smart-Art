@@ -20,9 +20,11 @@ public class Artboard {
     private String artboardName;
     @Column(name = "UserID")
     private Long userId;
-    @Column(name = "isPrivate")
-    private long isPrivate;
 
+    /*
+    @Column(name = "IsPrivate")
+    private long isPrivate;
+    */
 
 
     public Long getArtboardId() {
@@ -51,6 +53,8 @@ public class Artboard {
         this.userId = userId;
     }
 
+
+    /*
     public long getIsPrivate(){
         return isPrivate;
     }
@@ -58,5 +62,6 @@ public class Artboard {
     public void setIsPrivate(Long isPrivate){
         this.isPrivate = isPrivate;
     }
+    */
 
 }

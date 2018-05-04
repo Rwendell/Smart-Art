@@ -3,8 +3,11 @@ package com.smartart.controller;
 
 import com.smartart.model.Artboard;
 import com.smartart.model.ArtboardRepository;
+import com.smartart.model.User;
+import com.smartart.model.UserRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +20,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  * This Class controls the Artboards
  */
-
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/artboard") // This means URL's start with /artboard (after Application path)
 
@@ -65,9 +67,9 @@ public class ArtboardController {
 
 
 
-    @GetMapping(path = "/getboards", produces = "application/json")
+    @GetMapping(path = "/getboardname", produces = "application/json")
     public @ResponseBody
-    String getBoards(@RequestParam Long artboardID){
+    String getBoardName(@RequestParam Long artboardID){
 
         JSONObject response = new JSONObject();
 
@@ -78,6 +80,9 @@ public class ArtboardController {
 
 
     }
+
+
+    /*
 
     @GetMapping(path = "/getpublic", produces = "application/json")
     public @ResponseBody
@@ -103,6 +108,7 @@ public class ArtboardController {
 
         return resp.toString();
     }
+
 
     @PostMapping(path = "/makeprivate", produces = "application/json")
     public @ResponseBody
@@ -130,6 +136,7 @@ public class ArtboardController {
         return resp.toString();
     }
 
+*/
     @GetMapping(path = "/search", produces = "application/json")
     public @ResponseBody
     String search(@RequestParam String artboardName){
@@ -152,6 +159,7 @@ public class ArtboardController {
 
     }
 
+    /*
     @GetMapping(path = "/share", produces = "application/json")
     public @ResponseBody
     String share(@RequestParam Long artboardID, Long sharedUserID){
@@ -172,6 +180,7 @@ public class ArtboardController {
         return resp.toString();
     }
 
+    */
 
 }
 
