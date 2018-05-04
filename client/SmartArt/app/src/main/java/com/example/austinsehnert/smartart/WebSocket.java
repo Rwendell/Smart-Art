@@ -111,7 +111,7 @@ public class WebSocket extends Activity {
 
                 Log.i("Websocket", "Opened");
                 // mWebSocketClient.send("Hello from " + Build.MANUFACTURER + " " + Build.MODEL);
-                mWebSocketClient.send("{\"drawElement\": \"John\"}");
+                //mWebSocketClient.send("{\"drawElement\": \"John\"}");
             }
 
             /**

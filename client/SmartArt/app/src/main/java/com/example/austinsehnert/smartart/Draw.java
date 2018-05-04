@@ -29,6 +29,10 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import okhttp3.*;
 import okio.ByteString;
@@ -53,6 +57,7 @@ public class Draw extends View{
 
     private boolean erase = false;
 
+    private List<String> coords = new CopyOnWriteArrayList<>();
 
     /**
      * Draw class for user to draw on the canvas
@@ -106,25 +111,43 @@ public class Draw extends View{
         float xCord = event.getX();
         float yCord = event.getY();
 
+
+
+
         switch (event.getAction()) {
+
+            //try creating individual strings inside of each case statement
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xCord, yCord);
+                coords.add(event.getX() + " " + event.getY());
+                //String down = event.getX() + " " + event.getY();
+                Log.d("DOWN:", xCord + " " + yCord);
                 break;
             case MotionEvent.ACTION_MOVE:
+
                 path.lineTo(xCord, yCord);
+                coords.add(event.getX() + " " + event.getY());
+
+                Log.d("MOVE:", xCord + " " + yCord);
+
                 break;
             case MotionEvent.ACTION_UP:
+                coords.add(event.getX() + " " + event.getY());
+                Log.d("UP:", xCord + " " + yCord);
+
                 canvas.drawPath(path, pathPaint);
+                coords.add("test");
+                
+
                 //ws.send("{\"drawElement\":  + " "path.toString() + pathPaint.toString()) + "}";
                 JSONObject test = new JSONObject();
                 try {
-                    test.put("drawElement", path.toString() + pathPaint.toString());
+                    test.put("drawElement", coords.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 Log.d("WEBSOCKET", test.toString());
                 ws.send(test.toString());
-
                 path.reset();
                 break;
             default:
