@@ -14,17 +14,30 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+
 
 import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
 
 import org.java_websocket.client.WebSocketClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import okhttp3.*;
+import okio.ByteString;
+
+import static com.example.austinsehnert.smartart.MainActivity.ws;
 
 
 /**
@@ -44,6 +57,7 @@ public class Draw extends View{
 
     private boolean erase = false;
 
+    private List<String> coords = new CopyOnWriteArrayList<>();
 
     /**
      * Draw class for user to draw on the canvas
@@ -69,14 +83,13 @@ public class Draw extends View{
         pathPaint.setStrokeJoin(Paint.Join.ROUND);
         pathPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
-
-
-
-
         brushSize = getResources().getInteger(R.integer.medium_size);
         lastBrushSize = brushSize;
     }
 
+    public void sendMessage() {
+        MainActivity.ws.send("Hellp...");
+    }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -97,16 +110,32 @@ public class Draw extends View{
     public boolean onTouchEvent(MotionEvent event){
         float xCord = event.getX();
         float yCord = event.getY();
-
         switch (event.getAction()) {
+            //try creating individual strings inside of each case statement
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xCord, yCord);
+                coords.add(event.getX() + " " + event.getY());
                 break;
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(xCord, yCord);
+                coords.add(event.getX() + " " + event.getY());
                 break;
             case MotionEvent.ACTION_UP:
+                coords.add(event.getX() + " " + event.getY());
                 canvas.drawPath(path, pathPaint);
+                //ws.send("{\"drawElement\":  + " "path.toString() + pathPaint.toString()) + "}";
+                JSONObject test = new JSONObject();
+                try {
+                    test.put("drawCoords", coords.toString());
+                    test.put("drawColor", Integer.toString(color));
+                    test.put("drawThick", Float.toString(brushSize));
+                    test.put("drawErase", Boolean.toString(erase));
+                    test.put("drawElement", true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.d("WEBSOCKET", test.toString());
+                ws.send(test.toString());
                 path.reset();
                 break;
             default:
