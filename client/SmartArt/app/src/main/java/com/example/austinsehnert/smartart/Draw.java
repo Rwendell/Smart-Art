@@ -110,39 +110,27 @@ public class Draw extends View{
     public boolean onTouchEvent(MotionEvent event){
         float xCord = event.getX();
         float yCord = event.getY();
-
-
-
-
         switch (event.getAction()) {
-
             //try creating individual strings inside of each case statement
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xCord, yCord);
                 coords.add(event.getX() + " " + event.getY());
-                //String down = event.getX() + " " + event.getY();
-                Log.d("DOWN:", xCord + " " + yCord);
                 break;
             case MotionEvent.ACTION_MOVE:
-
                 path.lineTo(xCord, yCord);
                 coords.add(event.getX() + " " + event.getY());
-
-                Log.d("MOVE:", xCord + " " + yCord);
-
                 break;
             case MotionEvent.ACTION_UP:
                 coords.add(event.getX() + " " + event.getY());
-                Log.d("UP:", xCord + " " + yCord);
-
                 canvas.drawPath(path, pathPaint);
-                coords.add("test");
-                
-
                 //ws.send("{\"drawElement\":  + " "path.toString() + pathPaint.toString()) + "}";
                 JSONObject test = new JSONObject();
                 try {
-                    test.put("drawElement", coords.toString());
+                    test.put("drawCoords", coords.toString());
+                    test.put("drawColor", Integer.toString(color));
+                    test.put("drawThick", Float.toString(brushSize));
+                    test.put("drawErase", Boolean.toString(erase));
+                    test.put("drawElement", true);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

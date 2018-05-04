@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.example.austinsehnert.smartart.utils.ArrayCopy;
+import com.example.austinsehnert.smartart.utils.ImgUtils;
+
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import okhttp3.WebSocket;
 import okhttp3.OkHttpClient;
@@ -64,7 +69,31 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onMessage(WebSocket webSocket, String text) {
             System.out.println("MESSAGE: " + text);
+
+            
+            Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
+
+            if(text.contains("image:")){
+                text = text.substring(5);
+                String[] fcArr = text.split("\\s+");
+
+                int[] fiBytesAsInt = new int[fcArr.length];
+                for (int i = 0; i < text.length(); i++) {
+                fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
+                }
+                byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
+
+
+                //research android filesystem
+                //ImgUtils.byteArrtoFile(fiBytes, "here");
+            }
+
+
         }
+
+
+
+
 
         @Override
         public void onMessage(WebSocket webSocket, ByteString bytes) {
