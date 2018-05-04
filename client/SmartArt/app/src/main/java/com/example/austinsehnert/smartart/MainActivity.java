@@ -1,5 +1,6 @@
 package com.example.austinsehnert.smartart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,9 @@ import android.util.Log;
 
 import com.example.austinsehnert.smartart.utils.ArrayCopy;
 import com.example.austinsehnert.smartart.utils.ImgUtils;
+import com.google.gson.Gson;
 
+import java.io.FileOutputStream;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import okhttp3.WebSocket;
@@ -28,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-       Intent signIn = new Intent(this, SignInActivity.class);
-       startActivity(signIn);
+       /*Intent signIn = new Intent(this, SignInActivity.class);
+       startActivity(signIn);*/
 
        //Intent select = new Intent(this, SelectBoardActivity.class);
        //startActivity(select);
@@ -76,30 +79,51 @@ public class MainActivity extends AppCompatActivity {
         public void onMessage(WebSocket webSocket, String text) {
             System.out.println("MESSAGE: " + text);
 
-
-           // Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
+            //Log.d("test", text);
 
             if(text.contains("image:")){
-                text = text.substring(5);
-                String[] fcArr = text.split("\\s+");
+                text = text.substring(7);
+
+                String fcArr[] = text.split("\\s+");
+
+                //Log.d("text","" + fcArr.length + " " + fcArr[fcArr.length] + "");
+
 
                 int[] fiBytesAsInt = new int[fcArr.length];
-                for (int i = 0; i < text.length(); i++) {
+
+
+
+
+                for (int i = 0; i < fcArr.length; i++) {
                 fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
                 }
+//                Log.d("fiBytes","" + fiBytesAsInt[fiBytesAsInt.length]);
+
                 byte[] fiBytes = ArrayCopy.int2byte(fiBytesAsInt);
 
 
+                String filename = "myfile";
+                //ImgUtils.byteArrtoFile(fiBytes, filename);
+                //String fileContents = "Hello world!";
+
+                FileOutputStream outputStream;
+
+                try {
+                    outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                    outputStream.write(fiBytes);
+                    outputStream.close();
+                    Log.d("saved","FILE SAVED");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
                 //research android filesystem
-                //ImgUtils.byteArrtoFile(fiBytes, "here");
+
             }
 
 
         }
-
-
-
-
 
         @Override
         public void onMessage(WebSocket webSocket, ByteString bytes) {
