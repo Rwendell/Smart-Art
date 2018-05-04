@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
         public void onMessage(WebSocket webSocket, String text) {
             System.out.println("MESSAGE: " + text);
 
-            
-            Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
+
+           // Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
 
             if(text.contains("image:")){
                 text = text.substring(5);
