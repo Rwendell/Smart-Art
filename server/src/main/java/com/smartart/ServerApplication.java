@@ -1,4 +1,4 @@
-package com.smartart.server;
+package com.smartart;
 
 import com.smartart.utils.ImgUtils;
 import org.springframework.boot.SpringApplication;
@@ -15,9 +15,9 @@ public class ServerApplication {
     public static void main(String[] args) {
 
         ImgUtils.byteArrtoFile(ImgUtils.fileToByteArr(
-                "/resources/board/1.png"),"/resources/board/test.png");
+                "/resources/board/1.png"),"/resources/board/demotest.png");
 
-        SpringApplication.run(ServerApplication.class, args);
+        //SpringApplication.run(ServerApplication.class, args);
     }
 
 }

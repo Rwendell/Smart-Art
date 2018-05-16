@@ -45,6 +45,8 @@ public class SocketHandler extends TextWebSocketHandler {
             throws InterruptedException, IOException {
 
 
+
+
         Map<String, String> value = new Gson().fromJson(message.getPayload(), Map.class);
 
         //client says they disconnect before they do
@@ -55,6 +57,7 @@ public class SocketHandler extends TextWebSocketHandler {
             String[] fcArr = fc.split("\\s+");
 
             int[] fiBytesAsInt = new int[fcArr.length];
+
             for (int i = 0; i < fc.length(); i++) {
                 fiBytesAsInt[i] = Integer.parseInt(fcArr[i]);
             }
@@ -71,7 +74,13 @@ public class SocketHandler extends TextWebSocketHandler {
             //grabs everything with drawElement
 
             if(!session.equals(webSocketSession)) {
-                webSocketSession.sendMessage(new TextMessage(value.get("drawElement")));
+
+                if(value.containsKey("drawElement")) {
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawCoords").toString()));
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawColor").toString()));
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawThick").toString()));
+                    webSocketSession.sendMessage(new TextMessage(value.get("drawErase").toString()));
+                }
             }
 
         }

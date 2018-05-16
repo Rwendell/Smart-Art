@@ -18,7 +18,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  * This Class controls the Users
  */
-
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/user") // This means URL's start with /user (after Application path)
 
@@ -145,6 +144,31 @@ public class UserController {
 
 
         return fail.toString();
+    }
+
+
+    @GetMapping(path = "/getboards", produces = "application/json")
+    public @ResponseBody
+    String getBoards(@RequestParam Long userID){
+
+        JSONObject response = new JSONObject();
+        User n = UserRepository.findByUserId(userID);
+        List<Long> boardIDs = new CopyOnWriteArrayList<>();
+
+        for (Artboard a : ArtboardRepository.findAll()) {
+
+            if (a.getUserId() == n.getUserId()) {
+                boardIDs.add(a.getArtboardId());
+            }
+
+        }
+
+        response.put("boards", boardIDs);
+        response.put("response", "Success");
+
+        return response.toString();
+
+
     }
 
     /**

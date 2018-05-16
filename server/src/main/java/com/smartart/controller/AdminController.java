@@ -6,6 +6,7 @@ import com.smartart.model.User;
 import com.smartart.model.UserRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * @author rwendell
  */
+@ComponentScan
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/admin") // This means URL's start with /artboard (after Application path)
 public class AdminController {
